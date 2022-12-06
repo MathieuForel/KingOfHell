@@ -35,13 +35,19 @@ public class CameraRayCast : MonoBehaviour
 
             hit.transform.GetComponent<Tiles>().PointerEnter();
             selectedGameObject = hit.transform.gameObject;
-            Debug.Log(hit.transform.name);
-            Debug.Log("hit");
+            //Debug.Log(hit.transform.name);
+            //Debug.Log("hit");
+
+
         }
         else
         {
             selectedGameObject.transform.GetComponent<Tiles>().PointerExit();
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            hit.transform.GetComponent<Tiles>().PointerClick();
+        }
     }
 }

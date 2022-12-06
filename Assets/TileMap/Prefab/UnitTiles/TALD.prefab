@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 3144630432826286821}
   - component: {fileID: 3144630432826286818}
   - component: {fileID: 7015647189302108598}
+  - component: {fileID: 7834053652993232259}
   m_Layer: 0
   m_Name: TALD
   m_TagString: Untagged
@@ -402,6 +403,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7834053652993232259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3144630432826286816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b5504d533687141a4e7e4ec5211592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6888239717183421193
 GameObject:
   m_ObjectHideFlags: 0

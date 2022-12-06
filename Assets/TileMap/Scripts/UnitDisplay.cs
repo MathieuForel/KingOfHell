@@ -5,9 +5,57 @@ using UnityEngine;
 public class UnitDisplay : MonoBehaviour
 {
 
+    public void Start()
+    {
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+        for (int i = 1; i < this.gameObject.transform.childCount; i++)
+        {
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+    }
+
+    public void Update()
+    {
+        if (this.gameObject.GetComponent<TileState>().isMove == true)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Is move false");
+                this.gameObject.GetComponent<TileState>().isMove = false;
+            }
+        }
+
+        if (this.gameObject.GetComponent<TileState>().isMove == false)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                Debug.Log("MouseUP IsMove false");
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+    }
 
     public void MoveAction()
     {
-        //this.gameObject.GetComponent<>
+        Debug.Log("Action worked");
+        this.gameObject.GetComponent<TileState>().isMove = true;
+        this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+    }
+
+    public void AttackAction()
+    {
+        this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+    }
+
+    public void RefuelAction()
+    {
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+    }
+
+    public void VisionAction()
+    {
+        this.gameObject.transform.GetChild(4).gameObject.SetActive(true);
     }
 }

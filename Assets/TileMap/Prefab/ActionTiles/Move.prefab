@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5958451550337994803}
   - component: {fileID: 5958451550337994802}
   - component: {fileID: -8796377874076813878}
+  - component: {fileID: 2851133619943183604}
   m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
@@ -47,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamBlue: 0
-  teamRed: 0
+  teamHeaven: 0
+  teamHell: 0
   teamNeutral: 0
   isTerrain: 0
   isPlains: 0
@@ -68,17 +69,17 @@ MonoBehaviour:
   isAirport: 0
   isUnit: 0
   isCAC: 0
-  isCACL: 0
-  isDT: 0
-  isH: 0
+  isTALD: 0
+  isT: 0
+  isS: 0
   isStrongVsCAC: 0
-  isStrongVsCACL: 0
-  isStrongVsDT: 0
-  isStrongVsH: 0
+  isStrongVsTALD: 0
+  isStrongVsT: 0
+  isStrongVsS: 0
   isWeakVsCAC: 0
-  isWeakVsCACL: 0
-  isWeakVsDT: 0
-  isWeakVsH: 0
+  isWeakVsTALD: 0
+  isWeakVsT: 0
+  isWeakVsS: 0
   isAction: 1
   isFog: 0
   isVision: 0
@@ -103,10 +104,12 @@ MonoBehaviour:
   bonusAttackRange: 0
   bonusMovementRange: 0
   bonusRefuelRange: 0
-  forCAC: 0
-  forCACL: 0
-  forDT: 0
-  forH: 0
+  handicapAttack: 0
+  handicapDefence: 0
+  handicapVision: 0
+  handicapAttackRange: 0
+  handicapMovementRange: 0
+  handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
@@ -124,8 +127,8 @@ MonoBehaviour:
   Movement: 0
   mana: 0
   stamina: 0
-  turnsBeforeProduced: 0
   fundCost: 0
+  turnsBeforeProduced: 0
 --- !u!212 &-8796377874076813878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -178,6 +181,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2851133619943183604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958451550337994800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e567b3eb9988d40bb3aaa1a0268a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5958451551658968392
 PrefabInstance:
   m_ObjectHideFlags: 0
