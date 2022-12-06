@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 3144630432826286818}
   - component: {fileID: 7015647189302108598}
   m_Layer: 0
-  m_Name: CACL
+  m_Name: TALD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamBlue: 0
-  teamRed: 0
+  teamHeaven: 0
+  teamHell: 0
   teamNeutral: 0
   isTerrain: 0
   isPlains: 0
@@ -290,17 +290,17 @@ MonoBehaviour:
   isAirport: 0
   isUnit: 1
   isCAC: 0
-  isCACL: 1
-  isDT: 0
-  isH: 0
+  isTALD: 0
+  isT: 0
+  isS: 0
   isStrongVsCAC: 1
-  isStrongVsCACL: 0
-  isStrongVsDT: 0
-  isStrongVsH: 1
+  isStrongVsTALD: 0
+  isStrongVsT: 0
+  isStrongVsS: 0
   isWeakVsCAC: 0
-  isWeakVsCACL: 0
-  isWeakVsDT: 1
-  isWeakVsH: 0
+  isWeakVsTALD: 0
+  isWeakVsT: 0
+  isWeakVsS: 0
   isAction: 0
   isFog: 0
   isVision: 0
@@ -325,10 +325,12 @@ MonoBehaviour:
   bonusAttackRange: 0
   bonusMovementRange: 0
   bonusRefuelRange: 0
-  forCAC: 0
-  forCACL: 0
-  forDT: 0
-  forH: 0
+  handicapAttack: 0
+  handicapDefence: 0
+  handicapVision: 0
+  handicapAttackRange: 0
+  handicapMovementRange: 0
+  handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
@@ -346,8 +348,8 @@ MonoBehaviour:
   Movement: 0
   mana: 0
   stamina: 0
-  turnsBeforeProduced: 0
-  fundCost: 0
+  fundCost: 24000
+  turnsBeforeProduced: 3
 --- !u!212 &7015647189302108598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -389,8 +391,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e0a54826ffc3ee46b0aa3e1c1575a69, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamBlue: 0
-  teamRed: 0
+  teamHeaven: 0
+  teamHell: 0
   teamNeutral: 0
   isTerrain: 0
   isPlains: 0
@@ -67,18 +67,18 @@ MonoBehaviour:
   isFactory: 0
   isAirport: 0
   isUnit: 0
-  isCAC: 0
-  isCACL: 0
-  isDT: 0
-  isH: 0
+  isCAC: 1
+  isTALD: 1
+  isT: 0
+  isS: 0
   isStrongVsCAC: 0
-  isStrongVsCACL: 0
-  isStrongVsDT: 0
-  isStrongVsH: 0
+  isStrongVsTALD: 0
+  isStrongVsT: 0
+  isStrongVsS: 0
   isWeakVsCAC: 0
-  isWeakVsCACL: 0
-  isWeakVsDT: 0
-  isWeakVsH: 0
+  isWeakVsTALD: 0
+  isWeakVsT: 0
+  isWeakVsS: 0
   isAction: 0
   isFog: 0
   isVision: 0
@@ -103,13 +103,15 @@ MonoBehaviour:
   bonusAttackRange: 0
   bonusMovementRange: 0
   bonusRefuelRange: 0
-  forCAC: 0
-  forCACL: 0
-  forDT: 0
-  forH: 0
-  captureHP: 0
-  fundPerTurn: 15000
-  defencePoints: 0
+  handicapAttack: 0
+  handicapDefence: 0
+  handicapVision: 0
+  handicapAttackRange: 0
+  handicapMovementRange: 0
+  handicapRefuelRange: 0
+  captureHP: 50
+  fundPerTurn: 3000
+  defencePoints: 2
   baseHealth: 0
   baseAttack: 0
   baseDefence: 0
@@ -124,8 +126,8 @@ MonoBehaviour:
   Movement: 0
   mana: 0
   stamina: 0
-  turnsBeforeProduced: 0
   fundCost: 0
+  turnsBeforeProduced: 0
 --- !u!212 &6599714832954150582
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamBlue: 0
-  teamRed: 0
+  teamHeaven: 0
+  teamHell: 0
   teamNeutral: 1
   isTerrain: 1
   isPlains: 0
@@ -68,17 +68,17 @@ MonoBehaviour:
   isAirport: 0
   isUnit: 0
   isCAC: 0
-  isCACL: 0
-  isDT: 0
-  isH: 0
+  isTALD: 0
+  isT: 0
+  isS: 0
   isStrongVsCAC: 1
-  isStrongVsCACL: 1
-  isStrongVsDT: 1
-  isStrongVsH: 1
-  isWeakVsCAC: 1
-  isWeakVsCACL: 1
-  isWeakVsDT: 1
-  isWeakVsH: 1
+  isStrongVsTALD: 1
+  isStrongVsT: 1
+  isStrongVsS: 1
+  isWeakVsCAC: 0
+  isWeakVsTALD: 0
+  isWeakVsT: 0
+  isWeakVsS: 0
   isAction: 0
   isFog: 0
   isVision: 0
@@ -103,10 +103,10 @@ MonoBehaviour:
   bonusAttackRange: 0
   bonusMovementRange: 0
   bonusRefuelRange: 0
-  forCAC: 0
-  forCACL: 0
-  forDT: 0
-  forH: 0
+  forCAC: 1
+  forTALD: 1
+  forT: 1
+  forS: 1
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   Movement: 0
   mana: 0
   stamina: 0
-  turnsBeforeProduced: 0
   fundCost: 0
+  turnsBeforeProduced: 0
 --- !u!212 &7497447847697578110
 SpriteRenderer:
   m_ObjectHideFlags: 0

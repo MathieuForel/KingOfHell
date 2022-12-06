@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamBlue: 0
-  teamRed: 0
+  teamHeaven: 0
+  teamHell: 0
   teamNeutral: 0
   isTerrain: 0
   isPlains: 0
@@ -68,17 +68,17 @@ MonoBehaviour:
   isAirport: 0
   isUnit: 0
   isCAC: 0
-  isCACL: 0
-  isDT: 0
-  isH: 0
+  isTALD: 0
+  isT: 0
+  isS: 0
   isStrongVsCAC: 0
-  isStrongVsCACL: 0
-  isStrongVsDT: 0
-  isStrongVsH: 0
+  isStrongVsTALD: 0
+  isStrongVsT: 0
+  isStrongVsS: 0
   isWeakVsCAC: 0
-  isWeakVsCACL: 0
-  isWeakVsDT: 0
-  isWeakVsH: 0
+  isWeakVsTALD: 0
+  isWeakVsT: 0
+  isWeakVsS: 0
   isAction: 1
   isFog: 0
   isVision: 0
@@ -103,10 +103,12 @@ MonoBehaviour:
   bonusAttackRange: 0
   bonusMovementRange: 0
   bonusRefuelRange: 0
-  forCAC: 0
-  forCACL: 0
-  forDT: 0
-  forH: 0
+  handicapAttack: 0
+  handicapDefence: 0
+  handicapVision: 0
+  handicapAttackRange: 0
+  handicapMovementRange: 0
+  handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
@@ -124,8 +126,8 @@ MonoBehaviour:
   Movement: 0
   mana: 0
   stamina: 0
-  turnsBeforeProduced: 0
   fundCost: 0
+  turnsBeforeProduced: 0
 --- !u!212 &5994449964419216204
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -167,8 +169,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 15b1d39ac42ce4674bd63f86f9a0c5df, type: 3}
-  m_Color: {r: 0.5849056, g: 0.0082769515, b: 0.0082769515, a: 0.8}
+  m_Sprite: {fileID: 21300000, guid: 03b3f669dc5706a4592344c6385af858, type: 3}
+  m_Color: {r: 1, g: 0.58982205, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,6 +187,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3846086834341567685}
     m_Modifications:
+    - target: {fileID: 3272344824345122158, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 3993799992864000044, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
       propertyPath: m_Name
       value: Tile

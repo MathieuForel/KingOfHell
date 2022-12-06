@@ -7,8 +7,8 @@ public class TileState : MonoBehaviour
     [Header("Team")]
     [Space(15)]
 
-    [SerializeField] public bool teamBlue;
-    [SerializeField] public bool teamRed;
+    [SerializeField] public bool teamHeaven;
+    [SerializeField] public bool teamHell;
     [SerializeField] public bool teamNeutral;
     [Space(25)]
 
@@ -46,9 +46,9 @@ public class TileState : MonoBehaviour
     [Space(15)]
 
     [SerializeField] public bool isCAC;
-    [SerializeField] public bool isCACL;
-    [SerializeField] public bool isDT;
-    [SerializeField] public bool isH;
+    [SerializeField] public bool isTALD;
+    [SerializeField] public bool isT;
+    [SerializeField] public bool isS;
     [Space(25)]
 
 
@@ -56,15 +56,15 @@ public class TileState : MonoBehaviour
     [Space(15)]
 
     [SerializeField] public bool isStrongVsCAC;
-    [SerializeField] public bool isStrongVsCACL;
-    [SerializeField] public bool isStrongVsDT;
-    [SerializeField] public bool isStrongVsH;
+    [SerializeField] public bool isStrongVsTALD;
+    [SerializeField] public bool isStrongVsT;
+    [SerializeField] public bool isStrongVsS;
     [Space(15)]
 
     [SerializeField] public bool isWeakVsCAC;
-    [SerializeField] public bool isWeakVsCACL;
-    [SerializeField] public bool isWeakVsDT;
-    [SerializeField] public bool isWeakVsH;
+    [SerializeField] public bool isWeakVsTALD;
+    [SerializeField] public bool isWeakVsT;
+    [SerializeField] public bool isWeakVsS;
     [Space(25)]
 
 

@@ -15,10 +15,12 @@ public class TileStatistics : MonoBehaviour
     [SerializeField] public int bonusRefuelRange;
     [Space(15)]
 
-    [SerializeField] public bool forCAC;
-    [SerializeField] public bool forCACL;
-    [SerializeField] public bool forDT;
-    [SerializeField] public bool forH;
+    [SerializeField] public int handicapAttack;
+    [SerializeField] public int handicapDefence;
+    [SerializeField] public int handicapVision;
+    [SerializeField] public int handicapAttackRange;
+    [SerializeField] public int handicapMovementRange;
+    [SerializeField] public int handicapRefuelRange;
     [Space(25)]
 
 
@@ -49,6 +51,6 @@ public class TileStatistics : MonoBehaviour
     [SerializeField] public int Movement;
     [SerializeField] public int mana;
     [SerializeField] public int stamina;
-    [SerializeField] public int turnsBeforeProduced;
     [SerializeField] public int fundCost;
+    [SerializeField] public int turnsBeforeProduced;
 }
