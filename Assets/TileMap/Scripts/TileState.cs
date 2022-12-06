@@ -1,0 +1,109 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TileState : MonoBehaviour
+{
+    [Header("Team")]
+    [Space(15)]
+
+    [SerializeField] public bool teamBlue;
+    [SerializeField] public bool teamRed;
+    [SerializeField] public bool teamNeutral;
+    [Space(25)]
+
+
+    [Header("Terrain")]
+    [SerializeField] public bool isTerrain;
+    [Space(15)]
+
+    [SerializeField] public bool isPlains;
+    [SerializeField] public bool isSand;
+    [SerializeField] public bool isWater;
+    [SerializeField] public bool isMountain;
+    [SerializeField] public bool isBigMountain;
+    [SerializeField] public bool isMountainWithTunnel;
+    [SerializeField] public bool isBigMountainWithTunnel;
+    [SerializeField] public bool isForest;
+    [SerializeField] public bool isHole;
+    [SerializeField] public bool isRoad;
+    [Space(25)]
+
+
+    [Header("Structure")]
+    [SerializeField] public bool isStructure;
+    [Space(15)]
+
+    [SerializeField] public bool isHQ;
+    [SerializeField] public bool isCity;
+    [SerializeField] public bool isFactory;
+    [SerializeField] public bool isAirport;
+    [Space(25)]
+
+
+    [Header("Unit")]
+    [SerializeField] public bool isUnit;
+    [Space(15)]
+
+    [SerializeField] public bool isCAC;
+    [SerializeField] public bool isCACL;
+    [SerializeField] public bool isDT;
+    [SerializeField] public bool isH;
+    [Space(25)]
+
+
+    [Header("RPC")]
+    [Space(15)]
+
+    [SerializeField] public bool isStrongVsCAC;
+    [SerializeField] public bool isStrongVsCACL;
+    [SerializeField] public bool isStrongVsDT;
+    [SerializeField] public bool isStrongVsH;
+    [Space(15)]
+
+    [SerializeField] public bool isWeakVsCAC;
+    [SerializeField] public bool isWeakVsCACL;
+    [SerializeField] public bool isWeakVsDT;
+    [SerializeField] public bool isWeakVsH;
+    [Space(25)]
+
+
+    [Header("Action")]
+    [SerializeField] public bool isAction;
+    [Space(15)]
+
+    [SerializeField] public bool isFog;
+    [SerializeField] public bool isVision;
+    [SerializeField] public bool isMove;
+    [SerializeField] public bool isAttack;
+    [SerializeField] public bool isRefuel;
+
+    public void Start()
+    {
+        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, 0);
+
+        if (isTerrain == true)
+        {
+            this.gameObject.transform.position += new Vector3(0, 0, 0);
+            this.gameObject.transform.GetChild(0).gameObject.layer = 10;
+        }
+
+        if (isStructure == true)
+        {
+            this.gameObject.transform.position += new Vector3(0, 0, -10);
+            this.gameObject.transform.GetChild(0).gameObject.layer = 11;
+        }
+
+        if (isUnit == true)
+        {
+            this.gameObject.transform.position += new Vector3(0, 0, -20);
+            this.gameObject.transform.GetChild(0).gameObject.layer = 12;
+        }
+
+        if (isAction == true)
+        {
+            this.gameObject.transform.position += new Vector3(0, 0, -30);
+            this.gameObject.transform.GetChild(0).gameObject.layer = 13;
+        }
+    }
+}
