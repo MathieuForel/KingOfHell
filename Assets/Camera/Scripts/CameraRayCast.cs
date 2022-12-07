@@ -50,8 +50,6 @@ public class CameraRayCast : MonoBehaviour
             hit.transform.GetComponent<Tiles>().PointerEnter();
             selectedGameObject = hit.transform.gameObject;
             TargetHit = hit.transform.gameObject;
-
-            
         }
         else
         {
