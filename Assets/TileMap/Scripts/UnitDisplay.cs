@@ -16,27 +16,6 @@ public class UnitDisplay : MonoBehaviour
 
     }
 
-    public void Update()
-    {
-        if (this.gameObject.GetComponent<TileState>().isMove == true)
-        {
-            if(Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("Is move false");
-                this.gameObject.GetComponent<TileState>().isMove = false;
-            }
-        }
-
-        if (this.gameObject.GetComponent<TileState>().isMove == false)
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                Debug.Log("MouseUP IsMove false");
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
-        }
-    }
-
     public void MoveAction()
     {
         Debug.Log("Action worked");

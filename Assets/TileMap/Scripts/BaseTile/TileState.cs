@@ -85,23 +85,27 @@ public class TileState : MonoBehaviour
         if (isTerrain == true)
         {
             this.gameObject.transform.position += new Vector3(0, 0, 0);
+            this.gameObject.layer = 10;
             this.gameObject.transform.GetChild(0).gameObject.layer = 10;
         }
 
         if (isStructure == true)
         {
             this.gameObject.transform.position += new Vector3(0, 0, -10);
+            this.gameObject.layer = 11;
             this.gameObject.transform.GetChild(0).gameObject.layer = 11;
         }
 
         if (isUnit == true)
         {
             this.gameObject.transform.position += new Vector3(0, 0, -20);
+            this.gameObject.layer = 12;
             this.gameObject.transform.GetChild(0).gameObject.layer = 12;
         }
 
         if (isAction == true)
         {
+            this.gameObject.layer = 13;
             this.gameObject.transform.position += new Vector3(0, 0, -30);
             this.gameObject.transform.GetChild(0).gameObject.layer = 13;
         }

@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class CameraRayCast : MonoBehaviour
 {
-    public GameObject selectedGameObject;
+
 
     public Ray ray;
     public RaycastHit hit;
+
+    [SerializeField] public static GameObject selectedGameObject;
+    [SerializeField] public static GameObject TargetHit;
 
     public void Start()
     {
@@ -35,8 +38,7 @@ public class CameraRayCast : MonoBehaviour
 
             hit.transform.GetComponent<Tiles>().PointerEnter();
             selectedGameObject = hit.transform.gameObject;
-            //Debug.Log(hit.transform.name);
-            //Debug.Log("hit");
+            TargetHit = hit.transform.gameObject;
 
 
         }
@@ -47,7 +49,7 @@ public class CameraRayCast : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            hit.transform.GetComponent<Tiles>().PointerClick();
+            this.gameObject.transform.GetComponent<Actions>().TypeHit();
         }
     }
 }

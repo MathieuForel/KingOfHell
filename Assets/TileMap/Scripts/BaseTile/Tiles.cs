@@ -34,25 +34,4 @@ public class Tiles : MonoBehaviour
         //Debug.Log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
         Highlight.SetActive(false);
     }
-
-    public void PointerClick()
-    {
-        if(_isUnit == true)
-        {
-            this.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
-        }
-        Debug.Log("LETS GO");
-
-
-        if (_isAction == true)
-        {
-
-            if (_isMove == true)
-            {
-                this.gameObject.GetComponentInParent<Move>().StartMovement();
-                Debug.Log("COOLBRO");
-            }
-        }
-
-    }
 }
