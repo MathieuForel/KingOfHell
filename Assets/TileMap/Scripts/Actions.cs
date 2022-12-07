@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Actions : MonoBehaviour
 {
+    [SerializeField] public bool ActionMode;
+
     public void TypeHit()
     {
 
@@ -34,10 +36,14 @@ public class Actions : MonoBehaviour
     {
         if (CameraRayCast.TargetHit.GetComponentInParent<TileState>().isMove)
         {
+
             Debug.Log("MOVING");
             CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position = new Vector3(CameraRayCast.TargetHit.gameObject.transform.position.x, CameraRayCast.TargetHit.gameObject.transform.position.y, CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position.z);
             CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isMove = false;
             CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
+            CameraRayCast.CanSelect = false;
+            CameraRayCast.selectedGameObject = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject;
+
         }
 
         if (CameraRayCast.TargetHit.GetComponentInParent<TileState>().isAttack)
@@ -58,10 +64,14 @@ public class Actions : MonoBehaviour
 
     public void UnitHit()
     {
+        if(ActionMode == false) 
+        {
+            Debug.Log("unit");
+            CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
+        }    
 
+ 
 
-        Debug.Log("unit");
-        CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
         //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().AttackAction();
         //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().RefuelAction();
         //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().VisionAction();
@@ -100,4 +110,14 @@ public class Actions : MonoBehaviour
         Debug.Log("Terrain");
     }
 
+    public void AttackHit()
+    {
+        Debug.Log("hit option");
+        //CameraRayCast.TargetHit = CameraRayCast.selectedGameObject;
+        CameraRayCast.CanSelect = true;
+        CameraRayCast.selectedGameObject.gameObject.GetComponentInParent<UnitDisplay>().AttackAction();
+        ActionMode = true;
+
+        Debug.Log(CameraRayCast.CanSelect);
+    }
 }

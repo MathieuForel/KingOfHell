@@ -19,12 +19,17 @@ public class UnitDisplay : MonoBehaviour
     public void MoveAction()
     {
         Debug.Log("Action worked");
-        this.gameObject.GetComponent<TileState>().isMove = true;
-        this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        /*if(this.gameObject.GetComponent<TileState>().isMove == false)
+        {*/
+            this.gameObject.GetComponent<TileState>().isMove = true;
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        //}
     }
 
     public void AttackAction()
     {
+        Debug.Log("Attack Action worked");
+        this.gameObject.GetComponent<TileState>().isAttack = true;
         this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
     }
 
