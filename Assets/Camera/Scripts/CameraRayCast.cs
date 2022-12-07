@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
@@ -35,7 +36,14 @@ public class CameraRayCast : MonoBehaviour
 
             if (hit.transform.gameObject != selectedGameObject)
             {
-                selectedGameObject.transform.GetComponent<Tiles>().PointerExit();
+                try
+                {
+                    selectedGameObject.transform.GetComponent<Tiles>().PointerExit();
+                }
+                catch (NullReferenceException)
+                {
+                    selectedGameObject = hit.transform.gameObject;
+                }
                 selectedGameObject = hit.transform.gameObject;
             }
 
@@ -43,11 +51,18 @@ public class CameraRayCast : MonoBehaviour
             selectedGameObject = hit.transform.gameObject;
             TargetHit = hit.transform.gameObject;
 
-
+            
         }
         else
         {
-            selectedGameObject.transform.GetComponent<Tiles>().PointerExit();
+            try
+            {
+                selectedGameObject.transform.GetComponent<Tiles>().PointerExit();
+            }
+            catch (NullReferenceException)
+            {
+
+            }
         }
 
         if (Input.GetMouseButtonDown(0))

@@ -601,11 +601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846398546266559716, guid: 210e14aa0fbcf924eb48e4fdb610a104, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 846398546266559716, guid: 210e14aa0fbcf924eb48e4fdb610a104, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846398546266559716, guid: 210e14aa0fbcf924eb48e4fdb610a104, type: 3}
       propertyPath: m_LocalPosition.z
@@ -645,6 +645,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846398546266559718, guid: 210e14aa0fbcf924eb48e4fdb610a104, type: 3}
       propertyPath: teamHell
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 846398546266559718, guid: 210e14aa0fbcf924eb48e4fdb610a104, type: 3}
+      propertyPath: teamHeaven
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4194022266356910323, guid: 210e14aa0fbcf924eb48e4fdb610a104, type: 3}
@@ -1418,6 +1422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ce7527150315344a2efdd344cb5f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActionMenu: {fileID: 1200284397}
+  HellTurn: 1
   ActionMode: 0
 --- !u!4 &963600705 stripped
 Transform:
@@ -1660,7 +1666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1200284398
 RectTransform:
   m_ObjectHideFlags: 0
