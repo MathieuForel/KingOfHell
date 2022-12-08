@@ -54,6 +54,7 @@ MonoBehaviour:
   isPlains: 0
   isSand: 0
   isWater: 0
+  isOcean: 0
   isMountain: 0
   isBigMountain: 0
   isMountainWithTunnel: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 0
+  basecharacter: 0
   baseAttack: 0
   baseDefence: 0
   baseVision: 0

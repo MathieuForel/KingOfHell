@@ -113,6 +113,7 @@ MonoBehaviour:
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 0
+  basecharacter: 0
   baseAttack: 0
   baseDefence: 0
   baseVision: 0
@@ -169,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2462598ebe01bd545baa410885dd4ecb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -54,6 +54,7 @@ MonoBehaviour:
   isPlains: 0
   isSand: 0
   isWater: 0
+  isOcean: 0
   isMountain: 0
   isBigMountain: 0
   isMountainWithTunnel: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 0
+  basecharacter: 0
   baseAttack: 0
   baseDefence: 0
   baseVision: 0
@@ -169,8 +171,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f469f8253737d534ca7809ae6f0d2422, type: 3}
-  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a228202655d2e374886af65533e9aeaf, type: 3}
+  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.54509807}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

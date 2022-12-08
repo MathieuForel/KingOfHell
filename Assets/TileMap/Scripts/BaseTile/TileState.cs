@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileState : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class TileState : MonoBehaviour
     [SerializeField] public bool isPlains;
     [SerializeField] public bool isSand;
     [SerializeField] public bool isWater;
+    [SerializeField] public bool isOcean;
     [SerializeField] public bool isMountain;
     [SerializeField] public bool isBigMountain;
     [SerializeField] public bool isMountainWithTunnel;
@@ -108,6 +110,17 @@ public class TileState : MonoBehaviour
             this.gameObject.layer = 13;
             this.gameObject.transform.position += new Vector3(0, 0, -30);
             this.gameObject.transform.GetChild(0).gameObject.layer = 13;
+        }
+
+
+        if (teamHell)
+        {
+            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
+        }
+
+        if (teamHeaven)
+        {
+            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
         }
     }
 }

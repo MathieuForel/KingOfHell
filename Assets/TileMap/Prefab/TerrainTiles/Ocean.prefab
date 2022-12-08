@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1876506782768503304
+--- !u!1 &2740320974365930024
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1876506782768503305}
-  - component: {fileID: 1876506782768503307}
-  - component: {fileID: 1876506782768503306}
-  - component: {fileID: -3361393257719050282}
+  - component: {fileID: 2740320974365930071}
+  - component: {fileID: 2740320974365930069}
+  - component: {fileID: 2740320974365930070}
+  - component: {fileID: 616750235735357677}
   m_Layer: 0
-  m_Name: TunnelMountain
+  m_Name: Ocean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1876506782768503305
+--- !u!4 &2740320974365930071
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876506782768503304}
+  m_GameObject: {fileID: 2740320974365930024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6646477102008142801}
+  - {fileID: 6931079580264888228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1876506782768503307
+--- !u!114 &2740320974365930069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876506782768503304}
+  m_GameObject: {fileID: 2740320974365930024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
@@ -54,9 +54,10 @@ MonoBehaviour:
   isPlains: 0
   isSand: 0
   isWater: 0
+  isOcean: 1
   isMountain: 0
   isBigMountain: 0
-  isMountainWithTunnel: 1
+  isMountainWithTunnel: 0
   isBigMountainWithTunnel: 0
   isForest: 0
   isHole: 0
@@ -71,27 +72,27 @@ MonoBehaviour:
   isTALD: 0
   isT: 0
   isS: 0
-  isStrongVsCAC: 1
-  isStrongVsTALD: 1
-  isStrongVsT: 1
-  isStrongVsS: 1
-  isWeakVsCAC: 0
-  isWeakVsTALD: 0
-  isWeakVsT: 0
-  isWeakVsS: 0
+  isStrongVsCAC: 0
+  isStrongVsTALD: 0
+  isStrongVsT: 0
+  isStrongVsS: 0
+  isWeakVsCAC: 1
+  isWeakVsTALD: 1
+  isWeakVsT: 1
+  isWeakVsS: 1
   isAction: 0
   isFog: 0
   isVision: 0
   isMove: 0
   isAttack: 0
   isRefuel: 0
---- !u!114 &1876506782768503306
+--- !u!114 &2740320974365930070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876506782768503304}
+  m_GameObject: {fileID: 2740320974365930024}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fb5f4cd9b1397249bf04b91cc12c58a, type: 3}
@@ -107,7 +108,7 @@ MonoBehaviour:
   handicapDefence: 0
   handicapVision: 0
   handicapAttackRange: 0
-  handicapMovementRange: 0
+  handicapMovementRange: 100
   handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
@@ -129,13 +130,13 @@ MonoBehaviour:
   stamina: 0
   fundCost: 0
   turnsBeforeProduced: 0
---- !u!212 &-3361393257719050282
+--- !u!212 &616750235735357677
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876506782768503304}
+  m_GameObject: {fileID: 2740320974365930024}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -170,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0575952e7a3b57847bd68615eecdb312, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2b32c329c01cec409788e009b50c567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,12 +182,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1876506783820640322
+--- !u!1001 &2740320973691358263
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1876506782768503305}
+    m_TransformParent: {fileID: 2740320974365930071}
     m_Modifications:
     - target: {fileID: 3993799992864000044, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
       propertyPath: m_Name
@@ -238,8 +239,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
---- !u!4 &6646477102008142801 stripped
+--- !u!4 &6931079580264888228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5059714260545567635, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
-  m_PrefabInstance: {fileID: 1876506783820640322}
+  m_PrefabInstance: {fileID: 2740320973691358263}
   m_PrefabAsset: {fileID: 0}
