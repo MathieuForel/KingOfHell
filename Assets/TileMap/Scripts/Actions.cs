@@ -237,4 +237,28 @@ public class Actions : MonoBehaviour
 
         ActionMenu.gameObject.SetActive(true);
     }
+
+    public void Wait()
+    {
+        Debug.Log("-------------------------Wait");
+        ActionMode = false;
+        IsAttacking = false;
+        CameraRayCast.CanSelect = true;
+
+        ActionMenu.gameObject.SetActive(false);
+
+        if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isUnit)
+        {
+            SelectedUnit = CameraRayCast.selectedGameObject;
+        }
+
+        if (SelectedUnit.GetComponentInParent<TileState>().isUnit)
+        {
+            SelectedUnit.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            CameraRayCast.selectedGameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 }

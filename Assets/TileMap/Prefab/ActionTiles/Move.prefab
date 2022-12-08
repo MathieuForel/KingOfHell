@@ -102,15 +102,11 @@ MonoBehaviour:
   bonusAttack: 0
   bonusDefence: 0
   bonusVision: 0
-  bonusAttackRange: 0
   bonusMovementRange: 0
-  bonusRefuelRange: 0
   handicapAttack: 0
   handicapDefence: 0
   handicapVision: 0
-  handicapAttackRange: 0
   handicapMovementRange: 0
-  handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
@@ -122,11 +118,13 @@ MonoBehaviour:
   baseMovement: 0
   baseMana: 0
   baseStamina: 0
+  baseTurnsBeforeProduced: 0
   health: 0
+  character: 0
   attack: 0
   defence: 0
-  Vision: 0
-  Movement: 0
+  vision: 0
+  movement: 0
   mana: 0
   stamina: 0
   fundCost: 0
@@ -171,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: a228202655d2e374886af65533e9aeaf, type: 3}
   m_Color: {r: 0, g: 1, b: 0.106060505, a: 0.60784316}
   m_FlipX: 0
