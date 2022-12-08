@@ -52,43 +52,17 @@ public class StatCheck : MonoBehaviour
             S = true;
         }
     }
-
+    /*
     public void FixedUpdate()
     {
         this.gameObject.GetComponentInParent<TileStatistics>().attack = this.gameObject.GetComponentInParent<TileStatistics>().baseAttack + bonusAttack - handicapAttack;
         this.gameObject.GetComponentInParent<TileStatistics>().defence = this.gameObject.GetComponentInParent<TileStatistics>().baseDefence + bonusDefence - handicapDefence + defencePoints + this.gameObject.GetComponentInParent<TileStatistics>().bonusDefence;
         this.gameObject.GetComponentInParent<TileStatistics>().vision = this.gameObject.GetComponentInParent<TileStatistics>().baseVision + bonusVision - handicapVision;
         this.gameObject.GetComponentInParent<TileStatistics>().movement = this.gameObject.GetComponentInParent<TileStatistics>().baseMovement + bonusMovementRange - handicapMovementRange;
-
-        if (this.gameObject.GetComponentInParent<TileStatistics>().attack < 0)
-        {
-            this.gameObject.GetComponentInParent<TileStatistics>().attack = 0;
-        }
-
-        if (this.gameObject.GetComponentInParent<TileStatistics>().defence > 5)
-        {
-            this.gameObject.GetComponentInParent<TileStatistics>().defence = 5;
-        }
-
-        if (this.gameObject.GetComponentInParent<TileStatistics>().defence < 0)
-        {
-            this.gameObject.GetComponentInParent<TileStatistics>().defence = 0;
-        }
-
-        if (this.gameObject.GetComponentInParent<TileStatistics>().vision < 0)
-        {
-            this.gameObject.GetComponentInParent<TileStatistics>().vision = 0;
-        }
-
-        if (this.gameObject.GetComponentInParent<TileStatistics>().movement < 1)
-        {
-            this.gameObject.GetComponentInParent<TileStatistics>().movement = 1;
-        }
-    }
+    }*/
 
     public void OnCollisionEnter(Collision collision)
     {
-
         //--------------------------------------------------------LAYER-TERRAIN-----------------------------------------------------
 
         if (collision.gameObject.layer == 10)
@@ -213,5 +187,12 @@ public class StatCheck : MonoBehaviour
             defencePoints= 0;
         }
         //if climat
+
+        //--------------------------------------------------------CHECK-----------------------------------------------------
+        this.gameObject.GetComponentInParent<TileStatistics>().attack = this.gameObject.GetComponentInParent<TileStatistics>().baseAttack + bonusAttack - handicapAttack;
+        this.gameObject.GetComponentInParent<TileStatistics>().defence = this.gameObject.GetComponentInParent<TileStatistics>().baseDefence + bonusDefence - handicapDefence + defencePoints + this.gameObject.GetComponentInParent<TileStatistics>().bonusDefence;
+        this.gameObject.GetComponentInParent<TileStatistics>().vision = this.gameObject.GetComponentInParent<TileStatistics>().baseVision + bonusVision - handicapVision;
+        this.gameObject.GetComponentInParent<TileStatistics>().movement = this.gameObject.GetComponentInParent<TileStatistics>().baseMovement + bonusMovementRange - handicapMovementRange;
+
     }
 }

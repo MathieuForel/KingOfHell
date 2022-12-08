@@ -65,11 +65,17 @@ public class PauseMenu : MonoBehaviour
             if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
             {
                 Units.transform.GetChild(i).gameObject.tag = "CanMove";
+
+                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
+
             }
 
             if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
             {
                 Units.transform.GetChild(i).gameObject.tag = "CanMove";
+
+                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
+
             }
 
         }

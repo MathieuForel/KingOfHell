@@ -64,4 +64,59 @@ public class TileStatistics : MonoBehaviour
         mana = baseMana;
         stamina = baseStamina;
     }
+
+    public void FixedUpdate()
+    {
+        if(health > 10) 
+        {
+            health = 10;
+        }
+
+        if (attack < 0)
+        {
+            attack = 0;
+        }
+
+        if (defence > 5)
+        {
+            defence = 5;
+        }
+
+        if (defence < 0)
+        {
+            defence = 0;
+        }
+
+        if (vision < 1)
+        {
+            vision = 1;
+        }
+
+        if(movement< 1) 
+        { 
+            movement= 1;
+        }
+
+        if (mana < 0)
+        {
+            mana = 0;
+        }
+
+        if (stamina > 100)
+        {
+            stamina = 100;
+        }
+
+        if (stamina < 1)
+        {
+            stamina = 0;
+            movement = 1;
+        }
+
+        if(movement > stamina)
+        {
+            movement= stamina;
+        }
+
+    }
 }

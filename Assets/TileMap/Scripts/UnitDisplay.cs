@@ -35,6 +35,8 @@ public class UnitDisplay : MonoBehaviour
 
     public void RefuelAction()
     {
+        Debug.Log("Refuel Action worked");
+        this.gameObject.GetComponent<TileState>().isRefuel = true;
         this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
     }
 
