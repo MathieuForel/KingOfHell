@@ -36,6 +36,7 @@ public class TileStatistics : MonoBehaviour
     [Header("Unit")]
     [Space(15)]
     [SerializeField] public float baseHealth;
+    [SerializeField] public float basecharacter;
     [SerializeField] public float baseAttack;
     [SerializeField] public float baseDefence;
     [SerializeField] public int baseVision;

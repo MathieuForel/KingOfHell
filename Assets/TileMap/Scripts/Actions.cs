@@ -10,11 +10,13 @@ public class Actions : MonoBehaviour
 
     [SerializeField] public GameObject SelectedUnit;
 
+    [SerializeField] public GameObject PreviousUnit;
+
     [SerializeField] public bool HellTurn;
 
-    [SerializeField] private bool ActionMode = false;
+    [SerializeField] public bool ActionMode = false;
 
-    [SerializeField] private bool IsAttacking = false;
+    [SerializeField] public bool IsAttacking = false;
 
     public void TypeHit()
     {
@@ -105,9 +107,14 @@ public class Actions : MonoBehaviour
                 SelectedUnit = CameraRayCast.selectedGameObject;
             }
 
+            PreviousUnit = SelectedUnit;
+
             CameraRayCast.CanSelect = true;
             this.gameObject.GetComponent<CameraRayCast>().Update();
             CameraRayCast.CanSelect = false;
+
+            SelectedUnit = PreviousUnit;
+            CameraRayCast.selectedGameObject = PreviousUnit;
 
             Debug.Log(CameraRayCast.TargetHit.name);
             Debug.Log(CameraRayCast.TargetHit.layer);
@@ -144,6 +151,7 @@ public class Actions : MonoBehaviour
         if (ActionMode == true && IsAttacking == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn)
         {
             Debug.Log("Teaming :(");
+            CameraRayCast.TargetHit.transform.GetChild(1).gameObject.SetActive(false);
             IsAttacking = false;
             CancelAction();
         }

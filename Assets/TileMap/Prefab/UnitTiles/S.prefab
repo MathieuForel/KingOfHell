@@ -330,6 +330,7 @@ MonoBehaviour:
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 10
+  basecharacter: 2
   baseAttack: 2
   baseDefence: 1
   baseVision: 7
