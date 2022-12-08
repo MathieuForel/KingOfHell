@@ -27,6 +27,7 @@ public class Actions : MonoBehaviour
             ActionHit();
         }
 
+
         if (CameraRayCast.TargetHit.layer == 12) //Unit
         {
             Debug.Log("uni");
@@ -41,13 +42,15 @@ public class Actions : MonoBehaviour
             CancelAction();
         }
 
+
+
         //                         ------------------------------------------------ATTACK-------------------------------------------------
         if (CameraRayCast.TargetHit.layer != 13 && ActionMode)
         {
             Debug.Log("f");
             CancelAction();
         }
-        
+
         if (CameraRayCast.TargetHit.layer == 11) //Structure
         {
             Debug.Log("L");
@@ -59,30 +62,41 @@ public class Actions : MonoBehaviour
             Debug.Log("epicL");
             TerrainHit();
         }
-        
+
+
+
     }
 
     public void ActionHit()
     {
 
 
-
-
         // MOVEMENT
         if (CameraRayCast.TargetHit.GetComponentInParent<TileState>().isMove)
         {
-
-            Debug.Log("MOVING");
-            CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position = new Vector3(CameraRayCast.TargetHit.gameObject.transform.position.x, CameraRayCast.TargetHit.gameObject.transform.position.y, CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position.z);
-            CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isMove = false;
-            CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
-
-            if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.GetChild(0).gameObject.activeInHierarchy)
+            if(CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "CanMove" || CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isCAC)
             {
-                CameraRayCast.CanSelect = false;
-                CameraRayCast.selectedGameObject = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject;
+                Debug.Log("MOVING");
+                CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position = new Vector3(CameraRayCast.TargetHit.gameObject.transform.position.x, CameraRayCast.TargetHit.gameObject.transform.position.y, CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position.z);
+                CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isMove = false;
+                CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
 
-                ActionMenu.gameObject.SetActive(true);
+                if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.GetChild(0).gameObject.activeInHierarchy)
+                {
+                    CameraRayCast.CanSelect = false;
+                    CameraRayCast.selectedGameObject = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject;
+
+                    if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "CanMove")
+                    {
+                        ActionMenu.gameObject.SetActive(true);
+                    }
+
+                    if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "HasMoved")
+                    {
+                        CameraRayCast.CanSelect = true;
+                    }
+
+                }
             }
         }
 
@@ -157,7 +171,7 @@ public class Actions : MonoBehaviour
         }
 
         //MOVEMENT
-        if (ActionMode == false && IsAttacking == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn) 
+        if (ActionMode == false && IsAttacking == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn && CameraRayCast.TargetHit.transform.parent.tag == "CanMove") 
         {
             Debug.Log("unit");
             CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
@@ -171,7 +185,7 @@ public class Actions : MonoBehaviour
             IsAttacking = false;
             CameraRayCast.CanSelect = true;
 
-            SelectedUnit.transform.GetChild(0).gameObject.SetActive(false);
+            SelectedUnit.tag = "HasMoved";
 
             if (SelectedUnit.GetComponentInParent<TileState>().isCAC)
             {
@@ -254,11 +268,11 @@ public class Actions : MonoBehaviour
 
         if (SelectedUnit.GetComponentInParent<TileState>().isUnit)
         {
-            SelectedUnit.transform.GetChild(0).gameObject.SetActive(false);
+            SelectedUnit.tag = "HasMoved";
         }
         else
         {
-            CameraRayCast.selectedGameObject.transform.GetChild(0).gameObject.SetActive(false);
+            CameraRayCast.selectedGameObject.tag = "HasMoved";
         }
     }
 }

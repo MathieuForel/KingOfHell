@@ -290,7 +290,7 @@ MonoBehaviour:
   isCAC: 0
   isTALD: 0
   isT: 0
-  isS: 0
+  isS: 1
   isStrongVsCAC: 0
   isStrongVsTALD: 0
   isStrongVsT: 0

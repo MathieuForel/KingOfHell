@@ -294,7 +294,7 @@ MonoBehaviour:
   isAirport: 0
   isUnit: 1
   isCAC: 0
-  isTALD: 0
+  isTALD: 1
   isT: 0
   isS: 0
   isStrongVsCAC: 1

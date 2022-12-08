@@ -108,7 +108,7 @@ MonoBehaviour:
   isUnit: 1
   isCAC: 0
   isTALD: 0
-  isT: 0
+  isT: 1
   isS: 0
   isStrongVsCAC: 0
   isStrongVsTALD: 0

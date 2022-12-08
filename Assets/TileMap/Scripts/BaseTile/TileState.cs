@@ -112,6 +112,17 @@ public class TileState : MonoBehaviour
             this.gameObject.transform.GetChild(0).gameObject.layer = 13;
         }
 
+        //--------------------------------------------
+
+
+        if (teamHell == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
+        {
+            this.gameObject.tag = "CanMove";
+        }
+        else
+        {
+            this.gameObject.tag = "HasMoved";
+        }
 
         if (teamHell)
         {
@@ -122,5 +133,7 @@ public class TileState : MonoBehaviour
         {
             this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
         }
+
+
     }
 }

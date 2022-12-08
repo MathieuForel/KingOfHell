@@ -36,6 +36,21 @@ public class PauseMenu : MonoBehaviour
 
     public void EndTurn()
     {
+
+        for (i = 0; i < Units.transform.childCount; i++)
+        {
+            if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
+            {
+                Units.transform.GetChild(i).gameObject.tag = "HasMoved";
+            }
+
+            if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
+            {
+                Units.transform.GetChild(i).gameObject.tag = "HasMoved";
+            }
+
+        }
+
         if (this.gameObject.GetComponent<Actions>().HellTurn)
         {
             this.gameObject.GetComponent<Actions>().HellTurn = false;
@@ -49,23 +64,14 @@ public class PauseMenu : MonoBehaviour
         {
             if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
             {
-                Units.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                Units.transform.GetChild(i).gameObject.tag = "CanMove";
             }
-            /*else
-            {
-                Units.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            }*/
 
             if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
             {
-                Units.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                Units.transform.GetChild(i).gameObject.tag = "CanMove";
             }
-            /*else
-            {
-                Units.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            }*/
 
-            Debug.Log(Units.gameObject.transform.GetChild(i).name);
         }
     }
 }
