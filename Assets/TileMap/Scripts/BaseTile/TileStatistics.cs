@@ -10,17 +10,13 @@ public class TileStatistics : MonoBehaviour
     [SerializeField] public int bonusAttack;
     [SerializeField] public int bonusDefence;
     [SerializeField] public int bonusVision;
-    [SerializeField] public int bonusAttackRange;
     [SerializeField] public int bonusMovementRange;
-    [SerializeField] public int bonusRefuelRange;
     [Space(15)]
 
     [SerializeField] public int handicapAttack;
     [SerializeField] public int handicapDefence;
     [SerializeField] public int handicapVision;
-    [SerializeField] public int handicapAttackRange;
     [SerializeField] public int handicapMovementRange;
-    [SerializeField] public int handicapRefuelRange;
     [Space(25)]
 
 
@@ -43,15 +39,29 @@ public class TileStatistics : MonoBehaviour
     [SerializeField] public int baseMovement;
     [SerializeField] public int baseMana;
     [SerializeField] public int baseStamina;
+    [SerializeField] public int baseTurnsBeforeProduced;
     [Space(15)]
 
     [SerializeField] public float health;
+    [SerializeField] public float character;
     [SerializeField] public float attack;
     [SerializeField] public float defence;
-    [SerializeField] public int Vision;
-    [SerializeField] public int Movement;
+    [SerializeField] public int vision;
+    [SerializeField] public int movement;
     [SerializeField] public int mana;
     [SerializeField] public int stamina;
     [SerializeField] public int fundCost;
     [SerializeField] public int turnsBeforeProduced;
+
+    public void Start()
+    {
+        health = baseHealth;
+        character= basecharacter;
+        attack = baseAttack;
+        defence = baseDefence;
+        vision = baseVision;
+        movement = baseMovement;
+        mana = baseMana;
+        stamina = baseStamina;
+    }
 }

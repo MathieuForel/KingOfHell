@@ -8,11 +8,11 @@ public class UnitDisplay : MonoBehaviour
     public void Start()
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-
+/*
         for (int i = 1; i < this.gameObject.transform.childCount; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        }*/
 
     }
 

@@ -93,14 +93,14 @@ public class TileState : MonoBehaviour
 
         if (isStructure == true)
         {
-            this.gameObject.transform.position += new Vector3(0, 0, -10);
+            //this.gameObject.transform.position += new Vector3(0, 0, -1);
             this.gameObject.layer = 11;
             this.gameObject.transform.GetChild(0).gameObject.layer = 11;
         }
 
         if (isUnit == true)
         {
-            this.gameObject.transform.position += new Vector3(0, 0, -20);
+            this.gameObject.transform.position += new Vector3(0, 0, -2);
             this.gameObject.layer = 12;
             this.gameObject.transform.GetChild(0).gameObject.layer = 12;
         }
@@ -108,19 +108,19 @@ public class TileState : MonoBehaviour
         if (isAction == true)
         {
             this.gameObject.layer = 13;
-            this.gameObject.transform.position += new Vector3(0, 0, -30);
+            this.gameObject.transform.position += new Vector3(0, 0, -3);
             this.gameObject.transform.GetChild(0).gameObject.layer = 13;
         }
 
 
         if (teamHell)
         {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
         }
 
         if (teamHeaven)
         {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
         }
     }
 }

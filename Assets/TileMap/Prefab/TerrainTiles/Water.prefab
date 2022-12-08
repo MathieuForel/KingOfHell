@@ -54,6 +54,7 @@ MonoBehaviour:
   isPlains: 0
   isSand: 0
   isWater: 1
+  isOcean: 0
   isMountain: 0
   isBigMountain: 0
   isMountainWithTunnel: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   handicapDefence: 0
   handicapVision: 0
   handicapAttackRange: 0
-  handicapMovementRange: 1
+  handicapMovementRange: 100
   handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
@@ -121,10 +122,11 @@ MonoBehaviour:
   baseMana: 0
   baseStamina: 0
   health: 0
+  character: 0
   attack: 0
   defence: 0
-  Vision: 0
-  Movement: 0
+  vision: 0
+  movement: 0
   mana: 0
   stamina: 0
   fundCost: 0
