@@ -106,7 +106,7 @@ MonoBehaviour:
   handicapDefence: 0
   handicapVision: 0
   handicapMovementRange: 0
-  baseCaptureHP: 0
+  baseCaptureHP: 30
   captureHP: 30
   fundPerTurn: 0
   defencePoints: 1

@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c3c79340399e541b944cd34575c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamHeaven: 1
+  teamHeaven: 0
   teamHell: 0
-  teamNeutral: 0
+  teamNeutral: 1
   isTerrain: 1
   isPlains: 0
   isSand: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   handicapDefence: 0
   handicapVision: 0
   handicapMovementRange: 0
+  baseCaptureHP: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0

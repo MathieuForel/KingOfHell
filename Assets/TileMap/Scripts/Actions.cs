@@ -463,7 +463,7 @@ public class Actions : MonoBehaviour
             ActionMenu.gameObject.SetActive(false);
             CameraRayCast.CanSelect = true;
 
-            Debug.Log(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP)
+            Debug.Log(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP);
 
             if(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP < 1)
             {
