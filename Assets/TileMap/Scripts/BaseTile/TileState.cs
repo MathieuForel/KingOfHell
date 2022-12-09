@@ -133,7 +133,18 @@ public class TileState : MonoBehaviour
         {
             this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
         }
+    }
 
+    public void FixedUpdate()
+    {
+        if (teamHell)
+        {
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
+        }
 
+        if (teamHeaven)
+        {
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
+        }
     }
 }

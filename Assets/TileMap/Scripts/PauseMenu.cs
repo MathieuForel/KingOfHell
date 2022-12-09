@@ -21,11 +21,13 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             MenuPause.SetActive(true);
+            CameraRayCast.CanSelect = false;
         }
 
         if (Input.GetKeyDown(KeyCode.O) && MenuPause.gameObject.activeInHierarchy == true)
         {
             MenuPause.SetActive(false);
+            CameraRayCast.CanSelect = true;
         }
     }
 

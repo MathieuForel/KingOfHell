@@ -30,7 +30,7 @@ public class StatCheck : MonoBehaviour
 
     [SerializeField] public int defencePoints;
 
-
+    [SerializeField] public GameObject structureGameObject;
 
 
     public void Start()
@@ -180,6 +180,7 @@ public class StatCheck : MonoBehaviour
 
         if (collision.gameObject.layer == 11)
         {
+            structureGameObject = collision.transform.parent.gameObject;
             defencePoints = collision.transform.GetComponentInParent<TileStatistics>().defencePoints;
         }
         else

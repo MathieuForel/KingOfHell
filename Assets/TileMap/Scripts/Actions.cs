@@ -308,6 +308,8 @@ public class Actions : MonoBehaviour
                 }
             }
 
+            SelectedUnit = PreviousUnit;
+
             CameraRayCast.TargetHit.transform.parent.GetChild(2).gameObject.SetActive(false);
 
             CameraRayCast.CanSelect = true;
@@ -447,6 +449,38 @@ public class Actions : MonoBehaviour
         else
         {
             CameraRayCast.selectedGameObject.tag = "HasMoved";
+        }
+    }
+
+    public void Capture()
+    {
+        Debug.Log(SelectedUnit);
+        if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
+           SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+        {
+            SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP -= (int)SelectedUnit.transform.parent.GetComponent<TileStatistics>().health;
+
+            ActionMenu.gameObject.SetActive(false);
+            CameraRayCast.CanSelect = true;
+
+            Debug.Log(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP)
+
+            if(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP < 1)
+            {
+                SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP = SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().baseCaptureHP;
+                SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral = false;
+                
+                if (HellTurn)
+                {
+                    SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell = true;
+                    SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven = false;
+                }
+                else
+                {
+                    SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell = false;
+                    SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven = true;
+                }
+            }
         }
     }
 }

@@ -5,35 +5,31 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-
-    [SerializeField] private int Moving;
-
-    void Start()
-    {
-        Moving = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        /*if (this.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<TileState>().isMove == true)
-        {*/
-            if (Moving >= 1)
+    private void OnCollisionEnter(Collision collision)
+    {/*
+        if(collision.gameObject.layer == 10)
+        {
+            if(collision.gameObject.GetComponentInParent<TileState>().isWater)
             {
-                Debug.Log("Moving worked");
-                this.gameObject.transform.parent.gameObject.transform.parent.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
-                this.gameObject.transform.parent.gameObject.transform.parent.gameObject.GetComponent<TileState>().isMove = false;
-                Moving = 0;
-                this.gameObject.transform.parent.gameObject.SetActive(false);
-
-            }
-        //}
-
+                for (int i = 0; i < this.gameObject.transform.parent.childCount; i++)
+                {
+                    if (this.gameObject.transform.localPosition.x > 0)
+                    {
+                        if (this.gameObject.transform.parent.GetChild(i).localPosition.x > this.gameObject.transform.localPosition.x &&
+                            this.gameObject.transform.parent.GetChild(i).localPosition.y == this.gameObject.transform.localPosition.y)
+                        {
+                            this.gameObject.transform.parent.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (this.gameObject.transform.parent.GetChild(i).localPosition.x < this.gameObject.transform.localPosition.x)
+                        {
+                            this.gameObject.transform.parent.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                        }
+                    }
+                }
+        }*/
     }
 
-    public void StartMovement()
-    {
-        Moving += 1;
-    }
 }

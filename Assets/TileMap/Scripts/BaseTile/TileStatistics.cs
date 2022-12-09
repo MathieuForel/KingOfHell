@@ -23,6 +23,7 @@ public class TileStatistics : MonoBehaviour
     [Header("Structure")]
     [Space(15)]
 
+    [SerializeField] public int baseCaptureHP;
     [SerializeField] public int captureHP;
     [SerializeField] public int fundPerTurn;
     [SerializeField] public int defencePoints;
