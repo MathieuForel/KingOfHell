@@ -172,9 +172,9 @@ public class StatCheck : MonoBehaviour
         }
 
         //--------------------------------------------------------LAYER-STRUCTURE-----------------------------------------------------
-        Debug.Log("-------------------------------------------------------");
+       /* Debug.Log("-------------------------------------------------------");
         Debug.Log(this.gameObject.transform.parent.gameObject.name);
-        Debug.Log(collision.gameObject.transform.parent.gameObject.name);
+        Debug.Log(collision.gameObject.transform.parent.gameObject.name);*/
 
 
 

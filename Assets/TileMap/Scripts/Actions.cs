@@ -55,7 +55,7 @@ public class Actions : MonoBehaviour
         if (CameraRayCast.TargetHit.layer != 13 && SelectedUnit.GetComponentInParent<TileState>().isMove == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().isUnit == false)
         {
             Debug.Log("stopmove");
-            SelectedUnit.transform.parent.GetChild(1).gameObject.SetActive(false);
+            SelectedUnit.transform.GetChild(1).gameObject.SetActive(false);
         }
 
         if (CameraRayCast.TargetHit.layer == 11) //Structure
@@ -195,12 +195,8 @@ public class Actions : MonoBehaviour
         /*if (CameraRayCast.TargetHit.GetComponentInParent<TileState>().isAttack)
         {
             CancelAction();
-        }*//*
-        Debug.Log("PGGGG");
-        Debug.Log(ActionMode);
-        Debug.Log(IsAttacking);
-        Debug.Log(CameraRayCast.TargetHit.trandform.parent.name);
-        Debug.Log(HellTurn);*/
+        }*/
+
         Debug.Log(CameraRayCast.TargetHit.transform.parent.name);
         if (ActionMode == true && IsAttacking == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn)
         {
@@ -222,13 +218,24 @@ public class Actions : MonoBehaviour
         //                         ------------------------------------------------MOVE-------------------------------------------------
         if (SelectedUnit != null)
         {
-            if (SelectedUnit.GetComponentInParent<TileState>().isMove)
+            if (SelectedUnit.GetComponentInParent<TileState>().tag == "HasMoved")
             {
-                Debug.Log("stopUNITmove");
-                SelectedUnit.transform.parent.GetChild(1).gameObject.SetActive(false);
+                Debug.Log("DONT TOUTCH HIM");
                 CameraRayCast.TargetHit.transform.parent.gameObject.SetActive(true);
-                CameraRayCast.CanSelect = true;
+                SelectedUnit.transform.parent.gameObject.SetActive(true);
             }
+            else
+            {
+
+                if (SelectedUnit.GetComponentInParent<TileState>().isMove)
+                {
+                    Debug.Log("stopUNITmove");
+                    SelectedUnit.transform.parent.GetChild(1).gameObject.SetActive(false);
+                    CameraRayCast.TargetHit.transform.parent.gameObject.SetActive(true);
+                    CameraRayCast.CanSelect = true;
+                }
+            }
+
         }
 
         if (ActionMode == false && IsAttacking == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn && CameraRayCast.TargetHit.transform.parent.tag == "CanMove") 
