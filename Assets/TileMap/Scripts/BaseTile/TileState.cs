@@ -82,6 +82,9 @@ public class TileState : MonoBehaviour
 
     public void Start()
     {
+
+        this.gameObject.transform.position = new Vector3(Mathf.Floor(this.gameObject.transform.position.x), Mathf.Floor(this.gameObject.transform.position.y), Mathf.Floor(this.gameObject.transform.position.z));
+
         this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, 0);
 
         if (isTerrain == true)

@@ -79,12 +79,16 @@ public class Actions : MonoBehaviour
         }
 
         //                         ------------------------------------------------MOVE-------------------------------------------------
-        if (CameraRayCast.TargetHit.layer != 13 && SelectedUnit.GetComponentInParent<TileState>().isMove == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().isUnit == false)
+        if(SelectedUnit!= null)
         {
-            Debug.Log("stopmove");
-            SelectedUnit.transform.parent.GetChild(1).gameObject.SetActive(false);
+            if (CameraRayCast.TargetHit.layer != 13 && SelectedUnit.GetComponentInParent<TileState>().isMove == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().isUnit == false)
+            {
+                Debug.Log("stopmove");
+                SelectedUnit.transform.parent.GetChild(1).gameObject.SetActive(false);
 
+            }
         }
+
 
         if (CameraRayCast.TargetHit.layer == 11) //Structure
         {
@@ -461,7 +465,12 @@ public class Actions : MonoBehaviour
             SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP -= (int)SelectedUnit.transform.parent.GetComponent<TileStatistics>().health;
 
             ActionMenu.gameObject.SetActive(false);
+            ActionMode = false;
+            IsAttacking = false;
+            IsRefueling = false;
             CameraRayCast.CanSelect = true;
+
+            SelectedUnit.transform.parent.tag = "HasMoved";
 
             Debug.Log(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP);
 
