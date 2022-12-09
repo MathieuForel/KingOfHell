@@ -8,11 +8,11 @@ public class UnitDisplay : MonoBehaviour
     public void Start()
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-
+/*
         for (int i = 1; i < this.gameObject.transform.childCount; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        }*/
 
     }
 
@@ -35,6 +35,8 @@ public class UnitDisplay : MonoBehaviour
 
     public void RefuelAction()
     {
+        Debug.Log("Refuel Action worked");
+        this.gameObject.GetComponent<TileState>().isRefuel = true;
         this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
     }
 
