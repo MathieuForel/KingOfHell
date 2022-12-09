@@ -198,7 +198,7 @@ public class Actions : MonoBehaviour
         }*/
 
         Debug.Log(CameraRayCast.TargetHit.transform.parent.name);
-        if (ActionMode == true && IsAttacking == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn)
+        if (ActionMode == true /*&& IsAttacking == true*/ && (CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn || CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamNeutral))
         {
             Debug.Log("Teaming :(");
             CameraRayCast.TargetHit.transform.GetChild(1).gameObject.SetActive(false);
@@ -293,7 +293,7 @@ public class Actions : MonoBehaviour
             }
         }
 
-
+        /*
         //                         ------------------------------------------------ATTACK-------------------------------------------------
         if (ActionMode == true && IsAttacking == true && (CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn || CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamNeutral))
         {
@@ -308,7 +308,7 @@ public class Actions : MonoBehaviour
             Debug.Log("rip");
             IsRefueling = false;
             CancelAction();
-        }
+        }*/
         //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().AttackAction();
         //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().RefuelAction();
         //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().VisionAction();
