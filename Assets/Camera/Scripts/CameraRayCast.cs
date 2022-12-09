@@ -24,7 +24,17 @@ public class CameraRayCast : MonoBehaviour
     }
 
     public void Update()
-    {
+    {/*
+        if (this.gameObject.transform.GetComponent<Actions>().SelectedUnit == null)
+        {
+
+        }
+        else
+        {
+            Debug.Log(this.gameObject.transform.GetComponent<Actions>().SelectedUnit);
+        }*/
+
+
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
         if (Physics.Raycast(ray, out hit) && CanSelect == true)

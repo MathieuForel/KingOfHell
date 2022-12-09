@@ -32,7 +32,7 @@ public class TileStatistics : MonoBehaviour
     [Header("Unit")]
     [Space(15)]
     [SerializeField] public float baseHealth;
-    [SerializeField] public float basecharacter;
+    [SerializeField] public float baseCharacter;
     [SerializeField] public float baseAttack;
     [SerializeField] public float baseDefence;
     [SerializeField] public int baseVision;
@@ -56,7 +56,7 @@ public class TileStatistics : MonoBehaviour
     public void Start()
     {
         health = baseHealth;
-        character= basecharacter;
+        character= baseCharacter;
         attack = baseAttack;
         defence = baseDefence;
         vision = baseVision;
@@ -116,6 +116,14 @@ public class TileStatistics : MonoBehaviour
         if(movement > stamina)
         {
             movement= stamina;
+        }
+
+        if(baseHealth > health)
+        {
+            float healthlost = baseHealth - health;
+            float characterhealthratio = baseHealth / baseCharacter;
+            float characterslost = Mathf.FloorToInt(healthlost / characterhealthratio);
+            character = baseCharacter - characterslost;
         }
 
     }

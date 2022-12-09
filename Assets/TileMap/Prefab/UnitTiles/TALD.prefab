@@ -300,10 +300,10 @@ MonoBehaviour:
   isStrongVsCAC: 1
   isStrongVsTALD: 0
   isStrongVsT: 0
-  isStrongVsS: 0
+  isStrongVsS: 1
   isWeakVsCAC: 0
   isWeakVsTALD: 0
-  isWeakVsT: 0
+  isWeakVsT: 1
   isWeakVsS: 0
   isAction: 0
   isFog: 0
@@ -335,8 +335,8 @@ MonoBehaviour:
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 10
-  basecharacter: 3
-  baseAttack: 1.5
+  baseCharacter: 3
+  baseAttack: 7.5
   baseDefence: 0
   baseVision: 6
   baseMovement: 3

@@ -22,6 +22,33 @@ public class Actions : MonoBehaviour
 
     public void TypeHit()
     {
+        Debug.Log("*******************************************");
+        if (SelectedUnit == null)
+        {
+
+        }
+        else
+        {
+            Debug.Log(SelectedUnit.name);
+        }
+
+        try
+        {
+            if (this.gameObject.transform.GetComponent<Actions>().SelectedUnit.transform.parent == null)
+            {
+
+            }
+            else
+            {
+                Debug.Log(this.gameObject.transform.GetComponent<Actions>().SelectedUnit.transform.parent.name);
+            }
+        }
+        catch (UnassignedReferenceException)
+        {
+
+        }
+
+
         //                         ------------------------------------------------ATTACK & REFUEL-------------------------------------------------
         if (CameraRayCast.TargetHit.layer == 13 && IsAttacking == false && IsRefueling == false) //Action
         {
@@ -55,7 +82,8 @@ public class Actions : MonoBehaviour
         if (CameraRayCast.TargetHit.layer != 13 && SelectedUnit.GetComponentInParent<TileState>().isMove == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().isUnit == false)
         {
             Debug.Log("stopmove");
-            SelectedUnit.transform.GetChild(1).gameObject.SetActive(false);
+            SelectedUnit.transform.parent.GetChild(1).gameObject.SetActive(false);
+
         }
 
         if (CameraRayCast.TargetHit.layer == 11) //Structure
@@ -88,22 +116,19 @@ public class Actions : MonoBehaviour
                 CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isMove = false;
                 CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
 
-                if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.GetChild(0).gameObject.activeInHierarchy)
+                CameraRayCast.CanSelect = false;
+                CameraRayCast.selectedGameObject = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject;
+
+                if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "CanMove")
                 {
-                    CameraRayCast.CanSelect = false;
-                    CameraRayCast.selectedGameObject = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject;
-
-                    if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "CanMove")
-                    {
-                        ActionMenu.gameObject.SetActive(true);
-                    }
-
-                    if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "HasMoved")
-                    {
-                        CameraRayCast.CanSelect = true;
-                    }
-
+                    ActionMenu.gameObject.SetActive(true);
                 }
+
+                if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "HasMoved")
+                {
+                    CameraRayCast.CanSelect = true;
+                }
+
             }
         }
 
@@ -132,12 +157,12 @@ public class Actions : MonoBehaviour
 
             CameraRayCast.CanSelect = true;
             this.gameObject.GetComponent<CameraRayCast>().Update();
-            CameraRayCast.CanSelect = false;
+            //CameraRayCast.CanSelect = false;
 
             SelectedUnit = PreviousUnit;
             CameraRayCast.selectedGameObject = PreviousUnit;
 
-            Debug.Log(CameraRayCast.TargetHit.name);
+            Debug.Log(CameraRayCast.TargetHit.transform.parent.name);
             Debug.Log(CameraRayCast.TargetHit.layer);
             IsAttacking = true;
             ActionMode = true;
@@ -197,8 +222,8 @@ public class Actions : MonoBehaviour
             CancelAction();
         }*/
 
-        Debug.Log(CameraRayCast.TargetHit.transform.parent.name);
-        if (ActionMode == true /*&& IsAttacking == true*/ && (CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn || CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamNeutral))
+        //Debug.Log(CameraRayCast.TargetHit.transform.parent.name);
+        if (ActionMode == true && IsAttacking == true && (CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn || CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamNeutral))
         {
             Debug.Log("Teaming :(");
             CameraRayCast.TargetHit.transform.GetChild(1).gameObject.SetActive(false);
@@ -216,9 +241,9 @@ public class Actions : MonoBehaviour
 
 
         //                         ------------------------------------------------MOVE-------------------------------------------------
-        if (SelectedUnit != null)
+        if (SelectedUnit != null && IsRefueling == false)
         {
-            if (SelectedUnit.GetComponentInParent<TileState>().tag == "HasMoved")
+            if (SelectedUnit.GetComponentInParent<TileState>().tag == "HasMoved" && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn)
             {
                 Debug.Log("DONT TOUTCH HIM");
                 CameraRayCast.TargetHit.transform.parent.gameObject.SetActive(true);
@@ -235,15 +260,18 @@ public class Actions : MonoBehaviour
                     CameraRayCast.CanSelect = true;
                 }
             }
-
         }
 
-        if (ActionMode == false && IsAttacking == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn && CameraRayCast.TargetHit.transform.parent.tag == "CanMove") 
+
+
+
+        if (ActionMode == false && IsAttacking == false && IsRefueling == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn && CameraRayCast.TargetHit.transform.parent.tag == "CanMove") 
         {
             Debug.Log("unit");
             CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
             SelectedUnit = CameraRayCast.selectedGameObject;
         }
+
 
         //                         ------------------------------------------------ATTACK-------------------------------------------------
         if (ActionMode == true && IsAttacking == true && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHeaven == HellTurn)
@@ -251,15 +279,46 @@ public class Actions : MonoBehaviour
             Debug.Log("PLAY ATTACK ANIMATION HERE GGGGG");
             ActionMode = false;
             IsAttacking = false;
+
+            CameraRayCast.CanSelect = false;
+
+            Debug.Log(CameraRayCast.TargetHit.transform.parent.gameObject);
+
+            PreviousUnit = SelectedUnit;
+            SelectedUnit = CameraRayCast.TargetHit.transform.parent.gameObject;
+
+            this.gameObject.GetComponent<BattleCalculator>().StartBattle();
+
+            SelectedUnit.transform.GetChild(2).gameObject.SetActive(true); // counter attack fffffffffffffffffffffffffffffffffffff
+
+            Debug.Log(SelectedUnit.transform.transform.GetChild(2).childCount);
+
+            for (int i = 0; i < SelectedUnit.transform.transform.GetChild(2).childCount; i++)
+            {
+                Debug.Log(SelectedUnit.transform.GetChild(2).GetChild(i).name);
+
+                if (PreviousUnit.transform.position.x == SelectedUnit.transform.GetChild(2).GetChild(i).position.x &&
+                   PreviousUnit.transform.position.y == SelectedUnit.transform.GetChild(2).GetChild(i).position.y)
+                {
+                    Debug.Log("COUNTER ATTACK");
+
+                    SelectedUnit.GetComponent<TileStatistics>().FixedUpdate();
+                    this.gameObject.GetComponent<BattleCalculator>().CounterAttack();
+
+                }
+            }
+
+            CameraRayCast.TargetHit.transform.parent.GetChild(2).gameObject.SetActive(false);
+
             CameraRayCast.CanSelect = true;
 
-            SelectedUnit.tag = "HasMoved";
-            SelectedUnit.GetComponentInParent<TileStatistics>().mana -= 1; // contre attaque :(
+            PreviousUnit.tag = "HasMoved";
+            PreviousUnit.GetComponentInParent<TileStatistics>().mana -= 1; // contre attaque :(
 
-            if (SelectedUnit.GetComponentInParent<TileState>().isCAC)
+            if (PreviousUnit.GetComponentInParent<TileState>().isCAC)
             {
                 Debug.Log("CACMOVE");
-                SelectedUnit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
+                PreviousUnit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
             }
         }
 
@@ -269,8 +328,10 @@ public class Actions : MonoBehaviour
         {
             Debug.Log("Teaming REFUELING :D (cool!)");
             ActionMode = false;
-            IsRefueling = false;
             CameraRayCast.CanSelect = true;
+
+
+            Debug.Log(CameraRayCast.TargetHit.transform.parent.name);
 
             CameraRayCast.TargetHit.GetComponentInParent<TileStatistics>().stamina += 10;
 
@@ -292,29 +353,6 @@ public class Actions : MonoBehaviour
                 }
             }
         }
-
-        /*
-        //                         ------------------------------------------------ATTACK-------------------------------------------------
-        if (ActionMode == true && IsAttacking == true && (CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn || CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamNeutral))
-        {
-            Debug.Log("rip");
-            IsAttacking = false;
-            CancelAction();
-        }
-
-        //                         ------------------------------------------------REFUEL-------------------------------------------------
-        if (ActionMode == true && IsRefueling == true && (CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHeaven == HellTurn || CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamNeutral))
-        {
-            Debug.Log("rip");
-            IsRefueling = false;
-            CancelAction();
-        }*/
-        //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().AttackAction();
-        //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().RefuelAction();
-        //CameraRayCast.TargetHit.gameObject.GetComponentInParent<UnitDisplay>().VisionAction();
-
-
-
     }
     
     public void StructureHit()

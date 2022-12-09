@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HpUpdate : MonoBehaviour
 {
-    void Update()
+    void FixedUpdate()
     {
         this.gameObject.GetComponent<TextMesh>().text = this.gameObject.GetComponentInParent<TileStatistics>().health.ToString();
     }
