@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileState : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class TileState : MonoBehaviour
     [SerializeField] public bool isPlains;
     [SerializeField] public bool isSand;
     [SerializeField] public bool isWater;
+    [SerializeField] public bool isOcean;
     [SerializeField] public bool isMountain;
     [SerializeField] public bool isBigMountain;
     [SerializeField] public bool isMountainWithTunnel;
@@ -91,14 +93,14 @@ public class TileState : MonoBehaviour
 
         if (isStructure == true)
         {
-            this.gameObject.transform.position += new Vector3(0, 0, -10);
+            this.gameObject.transform.position += new Vector3(0, 0, -0.1f);
             this.gameObject.layer = 11;
             this.gameObject.transform.GetChild(0).gameObject.layer = 11;
         }
 
         if (isUnit == true)
         {
-            this.gameObject.transform.position += new Vector3(0, 0, -20);
+            this.gameObject.transform.position += new Vector3(0, 0, -2);
             this.gameObject.layer = 12;
             this.gameObject.transform.GetChild(0).gameObject.layer = 12;
         }
@@ -106,8 +108,43 @@ public class TileState : MonoBehaviour
         if (isAction == true)
         {
             this.gameObject.layer = 13;
-            this.gameObject.transform.position += new Vector3(0, 0, -30);
+            this.gameObject.transform.position += new Vector3(0, 0, -3);
             this.gameObject.transform.GetChild(0).gameObject.layer = 13;
+        }
+
+        //--------------------------------------------
+
+
+        if (teamHell == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
+        {
+            this.gameObject.tag = "CanMove";
+        }
+        else
+        {
+            this.gameObject.tag = "HasMoved";
+        }
+
+        if (teamHell)
+        {
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
+        }
+
+        if (teamHeaven)
+        {
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (teamHell)
+        {
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
+        }
+
+        if (teamHeaven)
+        {
+            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
         }
     }
 }

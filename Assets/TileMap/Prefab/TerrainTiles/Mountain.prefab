@@ -54,6 +54,7 @@ MonoBehaviour:
   isPlains: 0
   isSand: 0
   isWater: 0
+  isOcean: 0
   isMountain: 1
   isBigMountain: 0
   isMountainWithTunnel: 0
@@ -103,14 +104,17 @@ MonoBehaviour:
   bonusAttackRange: 0
   bonusMovementRange: 0
   bonusRefuelRange: 0
-  forCAC: 0
-  forTALD: 0
-  forT: 0
-  forS: 0
+  handicapAttack: 0
+  handicapDefence: 0
+  handicapVision: 0
+  handicapAttackRange: 0
+  handicapMovementRange: 1
+  handicapRefuelRange: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 0
+  basecharacter: 0
   baseAttack: 0
   baseDefence: 0
   baseVision: 0
@@ -118,10 +122,11 @@ MonoBehaviour:
   baseMana: 0
   baseStamina: 0
   health: 0
+  character: 0
   attack: 0
   defence: 0
-  Vision: 0
-  Movement: 0
+  vision: 0
+  movement: 0
   mana: 0
   stamina: 0
   fundCost: 0
@@ -167,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d8e05585267ef74bb870b731ead7bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
