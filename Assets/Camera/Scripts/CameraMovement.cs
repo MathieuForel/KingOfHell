@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     {
         mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y)) - this.gameObject.transform.position;
 
-        Debug.Log(mousePosition);
+        //Debug.Log(mousePosition);
 
         if(mousePosition.x > Vector3.one.x * 11)
         {

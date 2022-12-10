@@ -127,27 +127,28 @@ public class TileState : MonoBehaviour
             this.gameObject.tag = "HasMoved";
         }
 
-        if (teamHell)
-        {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
-        }
-
-        if (teamHeaven)
-        {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
-        }
+    TeamColorUpdate();
     }
 
-    public void FixedUpdate()
+    public void TeamColorUpdate()
     {
-        if (teamHell)
+        if (isUnit || isStructure)
         {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
-        }
+            if (teamNeutral)
+            {
+                this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(111f / 255f, 111f / 255f, 111f / 255f);
+            }
 
-        if (teamHeaven)
-        {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
+
+            if (teamHell)
+            {
+                this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255f / 255f, 100f / 255f, 100f / 255f);
+            }
+
+            if (teamHeaven)
+            {
+                this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(100f / 255f, 255f / 255f, 100f / 255f);
+            }
         }
     }
 }

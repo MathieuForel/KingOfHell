@@ -32,5 +32,16 @@ public class ActionActiveButton : MonoBehaviour
             }
         }
 
+        Camera.gameObject.GetComponent<Actions>().CanCapture();
+
+
+        if (Camera.gameObject.GetComponent<Actions>().IsCapturing)
+        {
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else
+        {
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        }
     }
 }

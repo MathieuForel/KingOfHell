@@ -20,6 +20,8 @@ public class Actions : MonoBehaviour
 
     [SerializeField] public bool IsRefueling = false;
 
+    [SerializeField] public bool IsCapturing = false;
+
     public void TypeHit()
     {
         Debug.Log("*******************************************");
@@ -456,11 +458,33 @@ public class Actions : MonoBehaviour
         }
     }
 
+
+    public void CanCapture()
+    {
+        if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
+        SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+        {
+            if(SelectedUnit.transform.parent.GetComponent<TileState>().teamHell != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell ||
+                SelectedUnit.transform.parent.GetComponent<TileState>().teamHeaven != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven ||
+                SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral)
+            {
+                IsCapturing = true;
+            }
+            else
+            {
+                IsCapturing= false;
+            }
+        }
+        else
+        {
+            IsCapturing = false;
+        }
+    }
+
     public void Capture()
     {
         Debug.Log(SelectedUnit);
-        if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
-           SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+        if (IsCapturing)
         {
             SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP -= (int)SelectedUnit.transform.parent.GetComponent<TileStatistics>().health;
 
@@ -489,6 +513,8 @@ public class Actions : MonoBehaviour
                     SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell = false;
                     SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven = true;
                 }
+
+                SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().TeamColorUpdate();
             }
         }
     }
