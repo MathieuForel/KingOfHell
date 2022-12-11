@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileStatistics : MonoBehaviour
 {
@@ -127,5 +128,28 @@ public class TileStatistics : MonoBehaviour
             character = baseCharacter - characterslost;
         }
 
+        if(turnsBeforeProduced > 0)
+        {
+            this.gameObject.tag = "HasMoved";
+        }
+
+
+        if (this.gameObject.tag == "CanMove")
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color += new Color(0,
+                                                                              0,
+                                                                              0, 10f / 255f);
+        }
+        if (this.gameObject.tag == "HasMoved")
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color -= new Color(0,
+                                                                              0,
+                                                                              0, 10f / 255f);
+        }
+
+        this.gameObject.GetComponent<SpriteRenderer>().color = new Color (this.gameObject.GetComponent<SpriteRenderer>().color.r,
+                                                                          this.gameObject.GetComponent<SpriteRenderer>().color.g,
+                                                                          this.gameObject.GetComponent<SpriteRenderer>().color.b, 
+                                                                          Mathf.Clamp(this.gameObject.GetComponent<SpriteRenderer>().color.a, 100f / 255f, 255f / 255f));
     }
 }

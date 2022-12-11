@@ -16,24 +16,24 @@ public class CameraMovement : MonoBehaviour
 
         //Debug.Log(mousePosition);
 
-        if(mousePosition.x > Vector3.one.x * 11)
+        if(mousePosition.x > Vector3.one.x * 10)
         {
-            this.gameObject.transform.position += Vector3.right;
+            this.gameObject.transform.position += Vector3.right * 0.1f;
         }
 
-        if (mousePosition.x < -Vector3.one.x * 11)
+        if (mousePosition.x < -Vector3.one.x * 10)
         {
-            this.gameObject.transform.position += Vector3.left;
+            this.gameObject.transform.position += Vector3.left * 0.1f;
         }
 
-        if (mousePosition.y > Vector3.one.x * 6)
+        if (mousePosition.y > Vector3.one.x * 5)
         {
-            this.gameObject.transform.position += Vector3.up;
+            this.gameObject.transform.position += Vector3.up * 0.1f;
         }
 
-        if (mousePosition.y < -Vector3.one.x * 6)
+        if (mousePosition.y < -Vector3.one.x * 5)
         {
-            this.gameObject.transform.position += Vector3.down;
+            this.gameObject.transform.position += Vector3.down * 0.1f;
         }
 
         this.gameObject.transform.position = new Vector3(Mathf.Clamp(this.gameObject.transform.position.x, cameraClampXminus, cameraClampXplus), Mathf.Clamp(this.gameObject.transform.position.y, cameraClampYminus, cameraClampYplus), -100);

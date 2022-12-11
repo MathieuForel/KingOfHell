@@ -8,6 +8,8 @@ public class Actions : MonoBehaviour
 {
     [SerializeField] public GameObject ActionMenu;
 
+    [SerializeField] public GameObject RecrutingMenu;
+
     [SerializeField] public GameObject SelectedUnit;
 
     [SerializeField] public GameObject PreviousUnit;
@@ -21,6 +23,15 @@ public class Actions : MonoBehaviour
     [SerializeField] public bool IsRefueling = false;
 
     [SerializeField] public bool IsCapturing = false;
+
+    [SerializeField] public GameObject CAC;
+
+    [SerializeField] public GameObject TALD;
+
+    [SerializeField] public GameObject T;
+
+    [SerializeField] public GameObject S;
+
 
     public void TypeHit()
     {
@@ -362,11 +373,85 @@ public class Actions : MonoBehaviour
             }
         }
     }
-    
+
     public void StructureHit()
     {
         Debug.Log("Struct");
+        Debug.Log(CameraRayCast.selectedGameObject.transform.parent.name);
+
+
+        if (HellTurn == CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().teamHell &&
+           HellTurn != CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().teamHeaven &&
+           CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().teamNeutral == false)
+        {
+            CameraRayCast.CanSelect = false;
+
+            RecrutingMenu.gameObject.SetActive(true);
+        }
     }
+
+    public void RecruitingCAC()
+    {
+        Debug.Log("Recruiting CAC");
+
+
+        if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isHQ || CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
+        {
+            Instantiate(CAC, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
+
+            CameraRayCast.CanSelect = true;
+
+            RecrutingMenu.gameObject.SetActive(false);
+        }
+    }
+
+    public void RecruitingTALD()
+    {
+        Debug.Log("Recruiting TALD");
+
+
+        if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isHQ || CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
+        {
+            Instantiate(TALD, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+            CameraRayCast.CanSelect = true;
+
+            RecrutingMenu.gameObject.SetActive(false);
+        }
+    }
+    public void RecruitingT()
+    {
+        Debug.Log("Recruiting T");
+
+
+        if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
+        {
+            Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+            CameraRayCast.CanSelect = true;
+
+            RecrutingMenu.gameObject.SetActive(false);
+        }
+    }
+    public void RecruitingS()
+    {
+        Debug.Log("Recruiting S");
+
+
+        if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isAirport)
+        {
+            Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+            CameraRayCast.CanSelect = true;
+
+            RecrutingMenu.gameObject.SetActive(false);
+        }
+    }
+
+    public void EscapeRecruitMenu()
+    {
+        CameraRayCast.CanSelect = true;
+
+        RecrutingMenu.gameObject.SetActive(false);
+    }
+
     public void TerrainHit()
     {
         Debug.Log("Terrain");
@@ -461,10 +546,11 @@ public class Actions : MonoBehaviour
 
     public void CanCapture()
     {
+
         if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
-        SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+            SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
         {
-            if(SelectedUnit.transform.parent.GetComponent<TileState>().teamHell != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell ||
+            if (SelectedUnit.transform.parent.GetComponent<TileState>().teamHell != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell ||
                 SelectedUnit.transform.parent.GetComponent<TileState>().teamHeaven != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven ||
                 SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral)
             {
@@ -472,13 +558,15 @@ public class Actions : MonoBehaviour
             }
             else
             {
-                IsCapturing= false;
+                IsCapturing = false;
             }
         }
         else
         {
             IsCapturing = false;
         }
+
+
     }
 
     public void Capture()

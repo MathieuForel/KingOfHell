@@ -41,16 +41,7 @@ public class PauseMenu : MonoBehaviour
 
         for (i = 0; i < Units.transform.childCount; i++)
         {
-            if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
-            {
-                Units.transform.GetChild(i).gameObject.tag = "HasMoved";
-            }
-
-            if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
-            {
-                Units.transform.GetChild(i).gameObject.tag = "HasMoved";
-            }
-
+            Units.transform.GetChild(i).gameObject.tag = "HasMoved";
         }
 
         if (this.gameObject.GetComponent<Actions>().HellTurn)
@@ -64,22 +55,35 @@ public class PauseMenu : MonoBehaviour
 
         for (i = 0; i < Units.transform.childCount; i++)
         {
-            if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
+            if (Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
             {
-                Units.transform.GetChild(i).gameObject.tag = "CanMove";
+                if (this.gameObject.GetComponent<Actions>().HellTurn == true)
+                {
+                    Units.transform.GetChild(i).gameObject.tag = "CanMove";
 
-                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
+                    Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
 
+                    if (Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced > 0)
+                    {
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced -= 1;
+                    }
+                }
             }
 
-            if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
+            if (Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
             {
-                Units.transform.GetChild(i).gameObject.tag = "CanMove";
+                if (this.gameObject.GetComponent<Actions>().HellTurn == false)
+                {
+                    Units.transform.GetChild(i).gameObject.tag = "CanMove";
 
-                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
+                    Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
 
+                    if (Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced > 0)
+                    {
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced -= 1;
+                    }
+                }
             }
-
         }
     }
 }

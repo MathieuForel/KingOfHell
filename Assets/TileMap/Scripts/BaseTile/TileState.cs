@@ -118,16 +118,24 @@ public class TileState : MonoBehaviour
         //--------------------------------------------
 
 
-        if (teamHell == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
+        if (isUnit && teamHell == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
         {
             this.gameObject.tag = "CanMove";
         }
-        else
+        if (isUnit && teamHell != GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
         {
             this.gameObject.tag = "HasMoved";
         }
 
-    TeamColorUpdate();
+        if (isUnit && teamHeaven != GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
+        {
+            this.gameObject.tag = "CanMove";
+        }
+        if (isUnit && teamHeaven == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
+        {
+            this.gameObject.tag = "HasMoved";
+        }
+        TeamColorUpdate();
     }
 
     public void TeamColorUpdate()
