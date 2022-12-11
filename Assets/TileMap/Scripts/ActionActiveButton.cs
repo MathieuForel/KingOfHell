@@ -8,6 +8,8 @@ public class ActionActiveButton : MonoBehaviour
 
     void Update()
     {
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+
         if (CameraRayCast.selectedGameObject.gameObject.GetComponentInParent<TileState>() != null)
         {
             if (CameraRayCast.selectedGameObject.gameObject.GetComponentInParent<TileState>().isUnit == true)
@@ -59,31 +61,46 @@ public class ActionActiveButton : MonoBehaviour
                 {
                     this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 }
-            }
 
-            if (CameraRayCast.selectedGameObject.gameObject.GetComponent<TileState>().isT == true)
-            {
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
-        }
 
-        if (CameraRayCast.selectedGameObject.gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell == Camera.GetComponent<Actions>().HellTurn ||
-            CameraRayCast.selectedGameObject.gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven != Camera.GetComponent<Actions>().HellTurn)
-        {
-            Camera.gameObject.GetComponent<Actions>().CanCapture();
-            Debug.Log("capturing");
-            if (Camera.gameObject.GetComponent<Actions>().IsCapturing)
-            {
-                this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+
+                Camera.gameObject.GetComponent<Actions>().CanCapture();
+
+                this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                if (Camera.gameObject.GetComponent<Actions>().IsCapturing)
+                {
+                    Debug.Log("capturing");
+                    this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("NOT capturing");
+                    this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+                }
             }
             else
             {
                 this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
             }
+            if (CameraRayCast.selectedGameObject.gameObject.GetComponent<TileState>().isT == true)
+            {
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+        /*
+        Camera.gameObject.GetComponent<Actions>().CanCapture();
+
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        if (Camera.gameObject.GetComponent<Actions>().IsCapturing)
+        {
+            Debug.Log("capturing");
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
         }
         else
         {
+            Debug.Log("NOT capturing");
             this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
-        }
+        }*/
+
     }
 }
