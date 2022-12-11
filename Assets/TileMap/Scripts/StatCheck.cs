@@ -65,6 +65,8 @@ public class StatCheck : MonoBehaviour
     {
         //--------------------------------------------------------LAYER-TERRAIN-----------------------------------------------------
 
+
+
         if (collision.gameObject.layer == 10)
         {
 
@@ -172,9 +174,9 @@ public class StatCheck : MonoBehaviour
         }
 
         //--------------------------------------------------------LAYER-STRUCTURE-----------------------------------------------------
-       /* Debug.Log("-------------------------------------------------------");
-        Debug.Log(this.gameObject.transform.parent.gameObject.name);
-        Debug.Log(collision.gameObject.transform.parent.gameObject.name);*/
+        /* Debug.Log("-------------------------------------------------------");
+         Debug.Log(this.gameObject.transform.parent.gameObject.name);
+         Debug.Log(collision.gameObject.transform.parent.gameObject.name);*/
 
 
 
@@ -182,10 +184,31 @@ public class StatCheck : MonoBehaviour
         {
             structureGameObject = collision.transform.parent.gameObject;
             defencePoints = collision.transform.GetComponentInParent<TileStatistics>().defencePoints;
+            Debug.Log(structureGameObject.GetComponent<TileState>().teamHell);
+
+            if (this.gameObject.GetComponentInParent<TileState>().teamHell == false && this.gameObject.GetComponentInParent<TileState>().teamHeaven == false /*&& this.gameObject.GetComponentInParent<TileState>().teamNeutral == false*/)
+            {
+
+                if (structureGameObject.GetComponent<TileState>().teamHell)
+                {
+                    this.gameObject.GetComponentInParent<TileState>().teamHell = true;
+                }
+
+                if (structureGameObject.GetComponent<TileState>().teamHeaven)
+                {
+                    this.gameObject.GetComponentInParent<TileState>().teamHeaven = true;
+                }
+
+                this.gameObject.GetComponentInParent<TileState>().TeamColorUpdate();
+
+                this.gameObject.GetComponentInParent<TileStatistics>().turnsBeforeProduced = this.gameObject.GetComponentInParent<TileStatistics>().baseTurnsBeforeProduced;
+            }
+
+
         }
         else
         {
-            defencePoints= 0;
+            defencePoints = 0;
         }
         //if climat
 
