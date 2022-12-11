@@ -103,7 +103,7 @@ public class TileState : MonoBehaviour
 
         if (isUnit == true)
         {
-            this.gameObject.transform.position += new Vector3(0, 0, -2);
+            this.gameObject.transform.position += new Vector3(0, 0, -1);
             this.gameObject.layer = 12;
             this.gameObject.transform.GetChild(0).gameObject.layer = 12;
         }

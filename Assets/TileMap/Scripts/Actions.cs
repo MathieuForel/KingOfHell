@@ -397,11 +397,17 @@ public class Actions : MonoBehaviour
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isHQ || CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
         {
-            Instantiate(CAC, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
+            if(HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 16000 ||
+               HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 16000)
+            {
+                Instantiate(CAC, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
 
-            CameraRayCast.CanSelect = true;
+                CameraRayCast.CanSelect = true;
 
-            RecrutingMenu.gameObject.SetActive(false);
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HeavenFunds -= 16000;
+            }
+            Debug.Log("not enough moeny to recruit");
         }
     }
 
@@ -412,10 +418,16 @@ public class Actions : MonoBehaviour
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isHQ || CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
         {
-            Instantiate(TALD, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
-            CameraRayCast.CanSelect = true;
+            if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 24000 ||
+                HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
+            {
+                Instantiate(TALD, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+                CameraRayCast.CanSelect = true;
 
-            RecrutingMenu.gameObject.SetActive(false);
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HeavenFunds -= 24000;
+            }
+            Debug.Log("not enough moeny to recruit");
         }
     }
     public void RecruitingT()
@@ -425,10 +437,16 @@ public class Actions : MonoBehaviour
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
         {
-            Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
-            CameraRayCast.CanSelect = true;
+            if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 24000 ||
+                HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
+            {
+                Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+                CameraRayCast.CanSelect = true;
 
-            RecrutingMenu.gameObject.SetActive(false);
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HeavenFunds -= 24000;
+            }
+            Debug.Log("not enough moeny to recruit");
         }
     }
     public void RecruitingS()
@@ -438,13 +456,18 @@ public class Actions : MonoBehaviour
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isAirport)
         {
-            Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
-            CameraRayCast.CanSelect = true;
+            if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 32000 ||
+                HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 32000)
+            {
+                Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+                CameraRayCast.CanSelect = true;
 
-            RecrutingMenu.gameObject.SetActive(false);
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HeavenFunds -= 32000;
+            }
+            Debug.Log("not enough moeny to recruit");
         }
     }
-
     public void EscapeRecruitMenu()
     {
         CameraRayCast.CanSelect = true;
@@ -546,7 +569,7 @@ public class Actions : MonoBehaviour
 
     public void CanCapture()
     {
-
+        Debug.Log("can i capture?");
         if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
             SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
         {
@@ -554,24 +577,27 @@ public class Actions : MonoBehaviour
                 SelectedUnit.transform.parent.GetComponent<TileState>().teamHeaven != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven ||
                 SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral)
             {
+                Debug.Log("Yes");
                 IsCapturing = true;
             }
             else
             {
                 IsCapturing = false;
             }
+            Debug.Log("no");
         }
         else
         {
             IsCapturing = false;
+            Debug.Log("even less");
         }
-
+        Debug.Log("absolutely not");
 
     }
 
     public void Capture()
     {
-        Debug.Log(SelectedUnit);
+        Debug.Log(SelectedUnit.transform.parent);
         if (IsCapturing)
         {
             SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP -= (int)SelectedUnit.transform.parent.GetComponent<TileStatistics>().health;

@@ -123,3 +123,4 @@ MonoBehaviour:
   handicapVision: 0
   handicapMovementRange: 0
   defencePoints: 0
+  structureGameObject: {fileID: 0}
