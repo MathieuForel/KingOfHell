@@ -138,6 +138,8 @@ public class Actions : MonoBehaviour
 
                 if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "CanMove")
                 {
+                    SelectedUnit = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.GetChild(0).gameObject;
+                    Debug.Log(SelectedUnit.transform.parent);
                     ActionMenu.gameObject.SetActive(true);
                 }
 
@@ -421,7 +423,7 @@ public class Actions : MonoBehaviour
             if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 24000 ||
                 HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
             {
-                Instantiate(TALD, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+                Instantiate(TALD, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
                 CameraRayCast.CanSelect = true;
 
                 RecrutingMenu.gameObject.SetActive(false);
@@ -440,7 +442,7 @@ public class Actions : MonoBehaviour
             if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 24000 ||
                 HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
             {
-                Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+                Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
                 CameraRayCast.CanSelect = true;
 
                 RecrutingMenu.gameObject.SetActive(false);
@@ -459,7 +461,7 @@ public class Actions : MonoBehaviour
             if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 32000 ||
                 HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 32000)
             {
-                Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("UNITS").transform);
+                Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
                 CameraRayCast.CanSelect = true;
 
                 RecrutingMenu.gameObject.SetActive(false);
@@ -570,28 +572,37 @@ public class Actions : MonoBehaviour
     public void CanCapture()
     {
         Debug.Log("can i capture?");
-        if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
-            SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+
+        if(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject != null)
         {
-            if (SelectedUnit.transform.parent.GetComponent<TileState>().teamHell != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell ||
-                SelectedUnit.transform.parent.GetComponent<TileState>().teamHeaven != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven ||
-                SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral)
+            if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
+                SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
             {
-                Debug.Log("Yes");
-                IsCapturing = true;
+                if (SelectedUnit.transform.parent.GetComponent<TileState>().teamHell != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell ||
+                    SelectedUnit.transform.parent.GetComponent<TileState>().teamHeaven != SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven ||
+                    SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral)
+                {
+                    Debug.Log("Yes");
+                    IsCapturing = true;
+                }
+                else
+                {
+                    IsCapturing = false;
+                }
+                Debug.Log("no");
             }
             else
             {
                 IsCapturing = false;
+                Debug.Log("even less");
             }
-            Debug.Log("no");
         }
         else
         {
             IsCapturing = false;
-            Debug.Log("even less");
+            Debug.Log("absolutely not");
         }
-        Debug.Log("absolutely not");
+
 
     }
 

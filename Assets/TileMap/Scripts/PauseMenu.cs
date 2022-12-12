@@ -23,19 +23,10 @@ public class PauseMenu : MonoBehaviour
         Units = GameObject.Find("Units");
     }
 
-    public void Update()
+    public void Activate()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            MenuPause.SetActive(true);
-            CameraRayCast.CanSelect = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.O) && MenuPause.gameObject.activeInHierarchy == true)
-        {
-            MenuPause.SetActive(false);
-            CameraRayCast.CanSelect = true;
-        }
+        MenuPause.SetActive(true);
+        CameraRayCast.CanSelect = false;
     }
 
     public void Settings()
@@ -117,5 +108,13 @@ public class PauseMenu : MonoBehaviour
                 }
             }
         }
+
+        Cancel();
+    }
+
+    public void Cancel()
+    {
+        MenuPause.SetActive(false);
+        CameraRayCast.CanSelect = true;
     }
 }
