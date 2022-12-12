@@ -106,11 +106,12 @@ MonoBehaviour:
   handicapDefence: 0
   handicapVision: 0
   handicapMovementRange: 0
+  baseCaptureHP: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
   baseHealth: 0
-  basecharacter: 0
+  baseCharacter: 0
   baseAttack: 0
   baseDefence: 0
   baseVision: 0
@@ -169,8 +170,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 8e88614a5d2aead4998a8c70955662c6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.71788883, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  m_Color: {r: 1, g: 0, b: 0.71788883, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -187,6 +188,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6920804263242107777}
     m_Modifications:
+    - target: {fileID: 3272344824345122158, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51b8cbcbf34a36243a954f42c5d344fc, type: 3}
+    - target: {fileID: 3272344824345122158, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272344824345122158, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272344824345122158, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3993799992864000044, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
       propertyPath: m_Name
       value: Tile
@@ -205,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5059714260545567635, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5059714260545567635, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
       propertyPath: m_LocalRotation.w

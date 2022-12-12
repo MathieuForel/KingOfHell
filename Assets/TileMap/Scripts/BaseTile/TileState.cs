@@ -82,6 +82,9 @@ public class TileState : MonoBehaviour
 
     public void Start()
     {
+
+        this.gameObject.transform.position = new Vector3(Mathf.Floor(this.gameObject.transform.position.x + 0.5f), Mathf.Floor(this.gameObject.transform.position.y + 0.5f), Mathf.Floor(this.gameObject.transform.position.z + 0.5f));
+
         this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, 0);
 
         if (isTerrain == true)
@@ -100,7 +103,7 @@ public class TileState : MonoBehaviour
 
         if (isUnit == true)
         {
-            this.gameObject.transform.position += new Vector3(0, 0, -2);
+            this.gameObject.transform.position += new Vector3(0, 0, -1);
             this.gameObject.layer = 12;
             this.gameObject.transform.GetChild(0).gameObject.layer = 12;
         }
@@ -115,36 +118,45 @@ public class TileState : MonoBehaviour
         //--------------------------------------------
 
 
-        if (teamHell == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
+        if (isUnit && teamHell == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
         {
             this.gameObject.tag = "CanMove";
         }
-        else
+        if (isUnit && teamHell != GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
         {
             this.gameObject.tag = "HasMoved";
         }
 
-        if (teamHell)
+        if (isUnit && teamHeaven != GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
         {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
+            this.gameObject.tag = "CanMove";
         }
-
-        if (teamHeaven)
+        if (isUnit && teamHeaven == GameObject.Find("MainCamera").GetComponent<Actions>().HellTurn)
         {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
+            this.gameObject.tag = "HasMoved";
         }
+        TeamColorUpdate();
     }
 
-    public void FixedUpdate()
+    public void TeamColorUpdate()
     {
-        if (teamHell)
+        if (isUnit || isStructure)
         {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255, 200, 0);
-        }
+            if (teamNeutral)
+            {
+                this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(111f / 255f, 111f / 255f, 111f / 255f);
+            }
 
-        if (teamHeaven)
-        {
-            this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(0, 255, 200);
+
+            if (teamHell)
+            {
+                this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(255f / 255f, 100f / 255f, 100f / 255f);
+            }
+
+            if (teamHeaven)
+            {
+                this.gameObject.transform.GetComponent<SpriteRenderer>().color = new Color(100f / 255f, 255f / 255f, 100f / 255f);
+            }
         }
     }
 }

@@ -9,6 +9,13 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject Units;
 
+    [SerializeField] private GameObject Structure;
+
+    [SerializeField] public int HellFunds;
+
+    [SerializeField] public int HeavenFunds;
+
+
     [SerializeField] public int i = 0;
 
     public void Start()
@@ -16,19 +23,10 @@ public class PauseMenu : MonoBehaviour
         Units = GameObject.Find("Units");
     }
 
-    public void Update()
+    public void Activate()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            MenuPause.SetActive(true);
-            CameraRayCast.CanSelect = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.O) && MenuPause.gameObject.activeInHierarchy == true)
-        {
-            MenuPause.SetActive(false);
-            CameraRayCast.CanSelect = true;
-        }
+        MenuPause.SetActive(true);
+        CameraRayCast.CanSelect = false;
     }
 
     public void Settings()
@@ -41,16 +39,7 @@ public class PauseMenu : MonoBehaviour
 
         for (i = 0; i < Units.transform.childCount; i++)
         {
-            if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
-            {
-                Units.transform.GetChild(i).gameObject.tag = "HasMoved";
-            }
-
-            if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
-            {
-                Units.transform.GetChild(i).gameObject.tag = "HasMoved";
-            }
-
+            Units.transform.GetChild(i).gameObject.tag = "HasMoved";
         }
 
         if (this.gameObject.GetComponent<Actions>().HellTurn)
@@ -62,24 +51,70 @@ public class PauseMenu : MonoBehaviour
             this.gameObject.GetComponent<Actions>().HellTurn = true;
         }
 
+
+        //-----------------------------------------------------UNIT CHECK-----------------------------------------------------
         for (i = 0; i < Units.transform.childCount; i++)
         {
-            if (this.gameObject.GetComponent<Actions>().HellTurn == Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
+            if (Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
             {
-                Units.transform.GetChild(i).gameObject.tag = "CanMove";
+                if (this.gameObject.GetComponent<Actions>().HellTurn == true)
+                {
+                    Units.transform.GetChild(i).gameObject.tag = "CanMove";
 
-                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
+                    Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
 
+                    if (Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced > 0)
+                    {
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced -= 1;
+                    }
+                }
             }
 
-            if (this.gameObject.GetComponent<Actions>().HellTurn != Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
+            if (Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
             {
-                Units.transform.GetChild(i).gameObject.tag = "CanMove";
+                if (this.gameObject.GetComponent<Actions>().HellTurn == false)
+                {
+                    Units.transform.GetChild(i).gameObject.tag = "CanMove";
 
-                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
+                    Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
 
+                    if (Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced > 0)
+                    {
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced -= 1;
+                    }
+
+
+                }
             }
-
         }
+
+        //-----------------------------------------------------Structure CHECK-----------------------------------------------------
+
+        for (i = 0; i < Structure.transform.childCount; i++)
+        {
+            if (Structure.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell)
+            {
+                if (this.gameObject.GetComponent<Actions>().HellTurn == true)
+                {
+                    HellFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
+                }
+            }
+
+            if (Structure.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
+            {
+                if (this.gameObject.GetComponent<Actions>().HellTurn == false)
+                {
+                    HeavenFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
+                }
+            }
+        }
+
+        Cancel();
+    }
+
+    public void Cancel()
+    {
+        MenuPause.SetActive(false);
+        CameraRayCast.CanSelect = true;
     }
 }
