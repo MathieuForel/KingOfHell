@@ -15,6 +15,10 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] public int HeavenFunds;
 
+    [SerializeField] public int HellCOPowerDuration;
+
+    [SerializeField] public int HeavenCOPowerDuration;
+
 
     [SerializeField] public int i = 0;
 
@@ -67,6 +71,14 @@ public class PauseMenu : MonoBehaviour
                     {
                         Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().turnsBeforeProduced -= 1;
                     }
+
+                    if(HellCOPowerDuration > 0)
+                    {
+                        HellCOPowerDuration -= 1;
+
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusMovementRange = 1;
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusAttack = 2.5f;
+                    }
                 }
             }
 
@@ -84,6 +96,13 @@ public class PauseMenu : MonoBehaviour
                     }
 
 
+                    if (HeavenCOPowerDuration > 0)
+                    {
+                        HeavenCOPowerDuration -= 1;
+
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusMovementRange = 1;
+                        Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusAttack = 2.5f;
+                    }
                 }
             }
         }
@@ -116,5 +135,22 @@ public class PauseMenu : MonoBehaviour
     {
         MenuPause.SetActive(false);
         CameraRayCast.CanSelect = true;
+    }
+
+    public void PowerActivation()
+    {
+
+        Debug.Log("Clicked power button");
+
+        if(this.gameObject.GetComponent<Actions>().HellTurn == true)
+        {
+            HellCOPowerDuration = 2;
+            this.gameObject.GetComponent<BattleCalculator>().COPowerHell = 0;
+        }
+        if (this.gameObject.GetComponent<Actions>().HellTurn == false)
+        {
+            HeavenCOPowerDuration = 2;
+            this.gameObject.GetComponent<BattleCalculator>().COPowerHeaven = 0;
+        }
     }
 }

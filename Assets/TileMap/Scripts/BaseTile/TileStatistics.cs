@@ -8,8 +8,8 @@ public class TileStatistics : MonoBehaviour
     [Header("Terrain")]
     [Space(15)]
 
-    [SerializeField] public int bonusAttack;
-    [SerializeField] public int bonusDefence;
+    [SerializeField] public float bonusAttack;
+    [SerializeField] public float bonusDefence;
     [SerializeField] public int bonusVision;
     [SerializeField] public int bonusMovementRange;
     [Space(15)]

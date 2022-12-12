@@ -22,6 +22,10 @@ public class BattleCalculator : MonoBehaviour
 
     [SerializeField] private float AnimationTime;
 
+    [SerializeField] public float COPowerHell;
+
+    [SerializeField] public float COPowerHeaven;
+
     public void StartBattle()
     {
         AttackingUnit = this.gameObject.GetComponent<Actions>().PreviousUnit;
@@ -55,6 +59,16 @@ public class BattleCalculator : MonoBehaviour
         if (DefendingUnit.GetComponent<TileStatistics>().health <= 0)
         {
             DefendingUnit.SetActive(false);
+        }
+
+        if(AttackingUnit.GetComponent<TileState>().teamHell) 
+        {
+            COPowerHell += Damage / 2;
+        }
+
+        if (AttackingUnit.GetComponent<TileState>().teamHeaven)
+        {
+            COPowerHeaven += Damage / 2;
         }
     }
 
@@ -125,6 +139,16 @@ public class BattleCalculator : MonoBehaviour
         if (AttackingUnit.GetComponent<TileStatistics>().health <= 0)
         {
             AttackingUnit.SetActive(false);
+        }
+
+        if (AttackingUnit.GetComponent<TileState>().teamHell)
+        {
+            COPowerHell += Damage;
+        }
+
+        if (AttackingUnit.GetComponent<TileState>().teamHeaven)
+        {
+            COPowerHeaven += Damage;
         }
     }
 
