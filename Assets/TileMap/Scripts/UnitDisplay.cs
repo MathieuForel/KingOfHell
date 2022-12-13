@@ -5,6 +5,10 @@ using UnityEngine;
 public class UnitDisplay : MonoBehaviour
 {
 
+    [SerializeField] public GameObject SmartMoveTile;
+
+    [SerializeField] public GameObject SmartMoveTimeInstantiated;
+
     public void Start()
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -19,11 +23,18 @@ public class UnitDisplay : MonoBehaviour
     public void MoveAction()
     {
         Debug.Log("Action worked");
-        /*if(this.gameObject.GetComponent<TileState>().isMove == false)
-        {*/
-            this.gameObject.GetComponent<TileState>().isMove = true;
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-        //}
+
+        this.gameObject.GetComponent<TileState>().isMove = true;
+
+        for(int i = 0; i < this.transform.GetChild(1).childCount; i++)
+        {
+            Destroy(this.gameObject.transform.GetChild(1).GetChild(i).gameObject);
+        }
+
+        SmartMoveTimeInstantiated = Instantiate(SmartMoveTile, this.gameObject.transform.position, Quaternion.identity, this.gameObject.transform.GetChild(1));
+        SmartMoveTimeInstantiated.GetComponent<SmartMovementTile>().depth = this.gameObject.GetComponent<TileStatistics>().movement;
+        this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
     }
 
     public void AttackAction()

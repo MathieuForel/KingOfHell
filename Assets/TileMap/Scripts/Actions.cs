@@ -283,6 +283,7 @@ public class Actions : MonoBehaviour
 
 
 
+        // ------------------------------------------------------------- CAN MOVE ---------------------------------------------
 
         if (ActionMode == false && IsAttacking == false && IsRefueling == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn && CameraRayCast.TargetHit.transform.parent.tag == "CanMove") 
         {

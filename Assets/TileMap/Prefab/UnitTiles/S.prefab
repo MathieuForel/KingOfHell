@@ -413,6 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b5504d533687141a4e7e4ec5211592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmartMoveTile: {fileID: 5411094312691596630, guid: 5d4f7c9506522144d9c45c8dfe7d1478, type: 3}
+  SmartMoveTimeInstantiated: {fileID: 0}
 --- !u!1 &4194022266356910323
 GameObject:
   m_ObjectHideFlags: 0

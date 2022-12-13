@@ -80,7 +80,7 @@ public class TileState : MonoBehaviour
     [SerializeField] public bool isAttack;
     [SerializeField] public bool isRefuel;
 
-    public void Start()
+    public void Awake()
     {
 
         this.gameObject.transform.position = new Vector3(Mathf.Floor(this.gameObject.transform.position.x + 0.5f), Mathf.Floor(this.gameObject.transform.position.y + 0.5f), Mathf.Floor(this.gameObject.transform.position.z + 0.5f));
