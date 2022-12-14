@@ -33,9 +33,9 @@ public class InformationUI : MonoBehaviour
         {
             this.gameObject.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = TS.GetComponent<SpriteRenderer>().sprite;
             this.gameObject.transform.GetChild(0).GetChild(2).GetComponent<Text>().text = TS.name;
-            this.gameObject.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = "Movement: " + TS.GetComponent<TileStatistics>().movement.ToString();
-            this.gameObject.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = "Vision: " + TS.GetComponent<TileStatistics>().vision.ToString();
-            this.gameObject.transform.GetChild(0).GetChild(5).GetComponent<Text>().text = "Defence: " + TS.GetComponent<TileStatistics>().defencePoints.ToString();
+            this.gameObject.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = "Movement: " + TS.GetComponent<TileStatistics>().bonusMovementRange.ToString();
+            this.gameObject.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = "Vision: " + TS.GetComponent<TileStatistics>().bonusVision.ToString();
+            this.gameObject.transform.GetChild(0).GetChild(5).GetComponent<Text>().text = "Defence: " + (TS.GetComponent<TileStatistics>().bonusDefence + TS.GetComponent<TileStatistics>().defencePoints).ToString();
         }
 
         if(U != null)
