@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3929093798581522942}
   - component: {fileID: 5311472515328468427}
   - component: {fileID: 3138066406664698180}
+  - component: {fileID: 3182497408156801382}
   m_Layer: 0
   m_Name: FogOfWar
   m_TagString: FogOfWar
@@ -160,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: a228202655d2e374886af65533e9aeaf, type: 3}
   m_Color: {r: 0.13571508, g: 0.13127448, b: 0.4716981, a: 1}
   m_FlipX: 0
@@ -183,8 +184,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 1.5}
+  m_Size: {x: 0.975, y: 0.975, z: 5}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!114 &5311472515328468427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +216,19 @@ MonoBehaviour:
   _isUnit: 0
   _isAction: 0
   _isMove: 0
+--- !u!54 &3182497408156801382
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929093798581522882}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

@@ -111,7 +111,7 @@ public class TileState : MonoBehaviour
         if (isAction == true)
         {
             this.gameObject.layer = 13;
-            this.gameObject.transform.position += new Vector3(0, 0, -3);
+            this.gameObject.transform.position += new Vector3(0, 0, -4);
             this.gameObject.transform.GetChild(0).gameObject.layer = 13;
         }
 

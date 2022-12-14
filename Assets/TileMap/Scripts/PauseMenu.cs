@@ -143,7 +143,9 @@ public class PauseMenu : MonoBehaviour
 
         Cancel();
 
+        FogGenerator.gameObject.SetActive(false);
         FogGenerator.GetComponent<FogOfWarGenerator>().GridGenerator();
+        FogGenerator.gameObject.SetActive(true);
     }
 
     public void Cancel()
