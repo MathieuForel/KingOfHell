@@ -34,6 +34,7 @@ public class UnitDisplay : MonoBehaviour
         SmartMoveTimeInstantiated = Instantiate(SmartMoveTile, this.gameObject.transform.position, Quaternion.identity, this.gameObject.transform.GetChild(1));
         SmartMoveTimeInstantiated.GetComponent<SmartMovementTile>().depth = this.gameObject.GetComponent<TileStatistics>().movement;
         this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
 
     }
 
