@@ -27,8 +27,6 @@ public class SmartMovementTile : MonoBehaviour
     [SerializeField] public float y;
     [SerializeField] public float depth;
 
-
-
     void Start()
     {
         NorthCollider = this.gameObject.transform.GetChild(1).gameObject;
@@ -79,7 +77,10 @@ public class SmartMovementTile : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
-
+        if(ParentTile == null)
+        {
+            ParentTile = this.gameObject.transform.parent.parent.gameObject;
+        }
 
     }
 
@@ -219,6 +220,24 @@ public class SmartMovementTile : MonoBehaviour
                     SmartMoveTileInstantiated.GetComponent<SmartMovementTile>().depth = depth - 1;
                 }
             }
+        }
+    }
+
+    public void Update()
+    {
+        if (this.gameObject.transform.GetChild(0).GetChild(0).gameObject.activeInHierarchy == true)
+        {
+            ParentTile.SetActive(true);
+            ParentTile.transform.GetChild(0).gameObject.SetActive(true);
+            ParentTile.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (this.gameObject.transform.GetChild(0).GetChild(0).gameObject.activeInHierarchy == false)
+        {
+            ParentTile.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
         }
     }
 

@@ -229,7 +229,7 @@ public class BattleCalculator : MonoBehaviour
 
     public void Update()
     {
-        if(AnimationTime >= 0)
+        if(AnimationTime > 0)
         {
             AnimationTime -= Time.deltaTime;
 

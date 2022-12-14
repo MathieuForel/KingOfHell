@@ -18,11 +18,19 @@ public class Tiles : MonoBehaviour
 
     public void Awake()
     {
-        _isTerrain = this.gameObject.GetComponentInParent<TileState>().isTerrain;
-        _isStructure = this.gameObject.GetComponentInParent<TileState>().isStructure;
-        _isUnit = this.gameObject.GetComponentInParent<TileState>().isUnit;
-        _isAction = this.gameObject.GetComponentInParent<TileState>().isAction;
-        _isMove = this.gameObject.GetComponentInParent<TileState>().isMove;
+        try
+        {
+            _isTerrain = this.gameObject.GetComponentInParent<TileState>().isTerrain;
+            _isStructure = this.gameObject.GetComponentInParent<TileState>().isStructure;
+            _isUnit = this.gameObject.GetComponentInParent<TileState>().isUnit;
+            _isAction = this.gameObject.GetComponentInParent<TileState>().isAction;
+            _isMove = this.gameObject.GetComponentInParent<TileState>().isMove;
+        }
+        catch (NullReferenceException)
+        {
+
+        }
+
     }
 
     public void PointerEnter()

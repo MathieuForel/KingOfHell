@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject Structure;
 
+    [SerializeField] private GameObject FogGenerator;
+
     [SerializeField] public int HellFunds;
 
     [SerializeField] public int HeavenFunds;
@@ -25,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     public void Start()
     {
         Units = GameObject.Find("Units");
+        EndTurn();
     }
 
     public void Activate()
@@ -44,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         for (i = 0; i < Units.transform.childCount; i++)
         {
             Units.transform.GetChild(i).gameObject.tag = "HasMoved";
+            Units.transform.GetChild(i).GetChild(4).gameObject.SetActive(false);
         }
 
         if (this.gameObject.GetComponent<Actions>().HellTurn)
@@ -64,6 +68,7 @@ public class PauseMenu : MonoBehaviour
                 if (this.gameObject.GetComponent<Actions>().HellTurn == true)
                 {
                     Units.transform.GetChild(i).gameObject.tag = "CanMove";
+                    Units.transform.GetChild(i).GetChild(4).gameObject.SetActive(true);
 
                     Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
 
@@ -87,6 +92,7 @@ public class PauseMenu : MonoBehaviour
                 if (this.gameObject.GetComponent<Actions>().HellTurn == false)
                 {
                     Units.transform.GetChild(i).gameObject.tag = "CanMove";
+                    Units.transform.GetChild(i).GetChild(4).gameObject.SetActive(true);
 
                     Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusDefence = 0;
 
@@ -116,6 +122,7 @@ public class PauseMenu : MonoBehaviour
                 if (this.gameObject.GetComponent<Actions>().HellTurn == true)
                 {
                     HellFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
+                    //Units.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                 }
             }
 
@@ -124,11 +131,14 @@ public class PauseMenu : MonoBehaviour
                 if (this.gameObject.GetComponent<Actions>().HellTurn == false)
                 {
                     HeavenFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
+                   // Units.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                 }
             }
         }
 
         Cancel();
+
+        FogGenerator.GetComponent<FogOfWarGenerator>().GridGenerator();
     }
 
     public void Cancel()
