@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,7 +56,17 @@ public class CameraRayCast : MonoBehaviour
                 selectedGameObject = hit.transform.gameObject;
             }
 
-            hit.transform.GetComponent<Tiles>().PointerEnter();
+            try
+            {
+                hit.transform.GetComponent<Tiles>().PointerEnter();
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+
+
+
             selectedGameObject = hit.transform.gameObject;
             TargetHit = hit.transform.gameObject;
         }
