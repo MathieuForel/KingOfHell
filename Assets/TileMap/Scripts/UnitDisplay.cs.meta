@@ -3,7 +3,9 @@ guid: b9b5504d533687141a4e7e4ec5211592
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - SmartMoveTile: {fileID: 5411094312691596630, guid: 5d4f7c9506522144d9c45c8dfe7d1478, type: 3}
+  - SmartMoveTimeInstantiated: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

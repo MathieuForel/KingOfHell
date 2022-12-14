@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CanMove
   - HasMoved
+  - FogOfWar
+  - BlockVision
+  - Vision
   layers:
   - Default
   - TransparentFX

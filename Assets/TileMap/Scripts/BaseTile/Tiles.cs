@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,13 +15,22 @@ public class Tiles : MonoBehaviour
     [SerializeField] private bool _isAction;
     [SerializeField] private bool _isMove;
 
+
     public void Awake()
     {
-        _isTerrain = this.gameObject.GetComponentInParent<TileState>().isTerrain;
-        _isStructure = this.gameObject.GetComponentInParent<TileState>().isStructure;
-        _isUnit = this.gameObject.GetComponentInParent<TileState>().isUnit;
-        _isAction = this.gameObject.GetComponentInParent<TileState>().isAction;
-        _isMove = this.gameObject.GetComponentInParent<TileState>().isMove;
+        try
+        {
+            _isTerrain = this.gameObject.GetComponentInParent<TileState>().isTerrain;
+            _isStructure = this.gameObject.GetComponentInParent<TileState>().isStructure;
+            _isUnit = this.gameObject.GetComponentInParent<TileState>().isUnit;
+            _isAction = this.gameObject.GetComponentInParent<TileState>().isAction;
+            _isMove = this.gameObject.GetComponentInParent<TileState>().isMove;
+        }
+        catch (NullReferenceException)
+        {
+
+        }
+
     }
 
     public void PointerEnter()
@@ -33,5 +43,23 @@ public class Tiles : MonoBehaviour
     {
         //Debug.Log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
         Highlight.SetActive(false);
+    }
+
+
+    public void Start()
+    {
+        Collider[] ColliderTouched = Physics.OverlapBox(this.gameObject.transform.position, this.gameObject.transform.localScale / 2);
+
+
+        for (int i = 0; i < ColliderTouched.Length; i++)
+        {
+            if (ColliderTouched[i].gameObject.transform.parent.gameObject.layer == this.gameObject.transform.parent.gameObject.layer)
+            {
+                if (this.gameObject.transform.parent.gameObject != ColliderTouched[i].gameObject.transform.parent.gameObject)
+                {
+                    this.gameObject.transform.parent.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

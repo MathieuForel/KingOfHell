@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Actions : MonoBehaviour
@@ -129,6 +127,8 @@ public class Actions : MonoBehaviour
             if(CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "CanMove" || CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isCAC)
             {
                 Debug.Log("MOVING");
+                CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.GetComponent<TileStatistics>().stamina -= Mathf.FloorToInt(Mathf.Abs(CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position.x - CameraRayCast.TargetHit.gameObject.transform.position.x)
+                                                                                                                                                    + Mathf.Abs(CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position.y - CameraRayCast.TargetHit.gameObject.transform.position.y));
                 CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position = new Vector3(CameraRayCast.TargetHit.gameObject.transform.position.x, CameraRayCast.TargetHit.gameObject.transform.position.y, CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.transform.position.z);
                 CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isMove = false;
                 CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
@@ -199,7 +199,7 @@ public class Actions : MonoBehaviour
             ActionMode = true;
 
             CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.gameObject.GetComponent<TileState>().isRefuel = false;
-            CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
+            //CameraRayCast.TargetHit.transform.parent.transform.parent.gameObject.SetActive(false);
             SelectedUnit.transform.GetChild(3).gameObject.SetActive(false);
 
 
@@ -282,7 +282,7 @@ public class Actions : MonoBehaviour
         }
 
 
-
+        // ------------------------------------------------------------- CAN MOVE ---------------------------------------------
 
         if (ActionMode == false && IsAttacking == false && IsRefueling == false && CameraRayCast.TargetHit.GetComponentInParent<TileState>().teamHell == HellTurn && CameraRayCast.TargetHit.transform.parent.tag == "CanMove") 
         {
@@ -306,11 +306,23 @@ public class Actions : MonoBehaviour
             PreviousUnit = SelectedUnit;
             SelectedUnit = CameraRayCast.TargetHit.transform.parent.gameObject;
 
+
+            if (PreviousUnit.GetComponentInParent<TileState>().isCAC)
+            {
+                PreviousUnit.tag = "HasMoved";
+                Debug.Log("CACMOVE");
+                PreviousUnit.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                PreviousUnit.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+                //PreviousUnit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
+            }
+
             this.gameObject.GetComponent<BattleCalculator>().StartBattle();
 
             SelectedUnit.transform.GetChild(2).gameObject.SetActive(true); // counter attack fffffffffffffffffffffffffffffffffffff
 
             Debug.Log(SelectedUnit.transform.transform.GetChild(2).childCount);
+
+
 
             for (int i = 0; i < SelectedUnit.transform.transform.GetChild(2).childCount; i++)
             {
@@ -336,11 +348,6 @@ public class Actions : MonoBehaviour
             PreviousUnit.tag = "HasMoved";
             PreviousUnit.GetComponentInParent<TileStatistics>().mana -= 1; // contre attaque :(
 
-            if (PreviousUnit.GetComponentInParent<TileState>().isCAC)
-            {
-                Debug.Log("CACMOVE");
-                PreviousUnit.gameObject.GetComponentInParent<UnitDisplay>().MoveAction();
-            }
         }
 
         //                         ------------------------------------------------REFUEL-------------------------------------------------
@@ -349,6 +356,7 @@ public class Actions : MonoBehaviour
         {
             Debug.Log("Teaming REFUELING :D (cool!)");
             ActionMode = false;
+            IsRefueling = false;
             CameraRayCast.CanSelect = true;
 
 
@@ -373,6 +381,7 @@ public class Actions : MonoBehaviour
                     CameraRayCast.TargetHit.GetComponentInParent<TileStatistics>().health += 2;
                 }
             }
+            PreviousUnit.tag = "HasMoved";
         }
     }
 

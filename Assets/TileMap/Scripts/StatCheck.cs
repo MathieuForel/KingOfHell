@@ -12,8 +12,8 @@ public class StatCheck : MonoBehaviour
     [Header("Terrain")]
     [Space(15)]
 
-    [SerializeField] public int bonusAttack;
-    [SerializeField] public int bonusDefence;
+    [SerializeField] public float bonusAttack;
+    [SerializeField] public float bonusDefence;
     [SerializeField] public int bonusVision;
     [SerializeField] public int bonusMovementRange;
     [Space(15)]
@@ -52,14 +52,14 @@ public class StatCheck : MonoBehaviour
             S = true;
         }
     }
-    /*
+    
     public void FixedUpdate()
     {
-        this.gameObject.GetComponentInParent<TileStatistics>().attack = this.gameObject.GetComponentInParent<TileStatistics>().baseAttack + bonusAttack - handicapAttack;
+        this.gameObject.GetComponentInParent<TileStatistics>().attack = this.gameObject.GetComponentInParent<TileStatistics>().baseAttack + bonusAttack - handicapAttack + this.gameObject.GetComponentInParent<TileStatistics>().bonusAttack;
         this.gameObject.GetComponentInParent<TileStatistics>().defence = this.gameObject.GetComponentInParent<TileStatistics>().baseDefence + bonusDefence - handicapDefence + defencePoints + this.gameObject.GetComponentInParent<TileStatistics>().bonusDefence;
-        this.gameObject.GetComponentInParent<TileStatistics>().vision = this.gameObject.GetComponentInParent<TileStatistics>().baseVision + bonusVision - handicapVision;
-        this.gameObject.GetComponentInParent<TileStatistics>().movement = this.gameObject.GetComponentInParent<TileStatistics>().baseMovement + bonusMovementRange - handicapMovementRange;
-    }*/
+        this.gameObject.GetComponentInParent<TileStatistics>().vision = this.gameObject.GetComponentInParent<TileStatistics>().baseVision + bonusVision - handicapVision + this.gameObject.GetComponentInParent<TileStatistics>().bonusVision;
+        this.gameObject.GetComponentInParent<TileStatistics>().movement = this.gameObject.GetComponentInParent<TileStatistics>().baseMovement + bonusMovementRange - handicapMovementRange + this.gameObject.GetComponentInParent<TileStatistics>().bonusMovementRange;
+    }
 
     public void OnCollisionEnter(Collision collision)
     {
