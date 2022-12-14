@@ -38,5 +38,24 @@ public class FogOfWarBehaviour : MonoBehaviour
 
         }
 
+        if (collision.gameObject.transform.parent.gameObject.layer == 11)
+        {
+            try
+            {
+                if (Camera.main.GetComponent<Actions>().HellTurn == true && collision.gameObject.GetComponentInParent<TileState>().teamHell)
+                {
+                    Destroy(this.gameObject);
+                }
+
+                if (Camera.main.GetComponent<Actions>().HellTurn == false && collision.gameObject.GetComponentInParent<TileState>().teamHeaven)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+        }
     }
 }

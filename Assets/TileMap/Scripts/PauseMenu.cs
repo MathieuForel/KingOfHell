@@ -50,6 +50,11 @@ public class PauseMenu : MonoBehaviour
             Units.transform.GetChild(i).GetChild(4).gameObject.SetActive(false);
         }
 
+        for (i = 0; i < Structure.transform.childCount; i++)
+        {
+            Structure.transform.GetChild(i).GetChild(2).gameObject.SetActive(false);
+        }
+
         if (this.gameObject.GetComponent<Actions>().HellTurn)
         {
             this.gameObject.GetComponent<Actions>().HellTurn = false;
@@ -122,7 +127,7 @@ public class PauseMenu : MonoBehaviour
                 if (this.gameObject.GetComponent<Actions>().HellTurn == true)
                 {
                     HellFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
-                    //Units.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
+                    Structure.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                 }
             }
 
@@ -131,7 +136,7 @@ public class PauseMenu : MonoBehaviour
                 if (this.gameObject.GetComponent<Actions>().HellTurn == false)
                 {
                     HeavenFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
-                   // Units.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
+                    Structure.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                 }
             }
         }

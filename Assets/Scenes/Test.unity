@@ -46519,7 +46519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nrow: 22
-  Ncolumn: 28
+  Ncolumn: 29
   FogPrefab: {fileID: 3929093798581522882, guid: f90f06b8a9f992648874a327ab3660a9, type: 3}
   activate: 0
 --- !u!4 &1650869591
