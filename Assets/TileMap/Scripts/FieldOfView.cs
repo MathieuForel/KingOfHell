@@ -77,9 +77,9 @@ public class FieldOfView : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, ViewDistance) && hit.transform.gameObject.tag == "BlockVision")
                 {
-                    Debug.Log("i hit something D:");
+                    //Debug.Log("i hit something D:");
                     vertex = origin;
-                    Debug.Log((this.gameObject.transform.position.x - hit.transform.position.x));
+                    //Debug.Log((this.gameObject.transform.position.x - hit.transform.position.x));
                 }
 
                 if (Physics.Raycast(ray, out hit, ViewDistance) && hit.transform.gameObject.tag == "FogOfWar")
