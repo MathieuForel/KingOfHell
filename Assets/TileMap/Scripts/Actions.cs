@@ -30,10 +30,14 @@ public class Actions : MonoBehaviour
 
     [SerializeField] public GameObject S;
 
-
+    public float i;
     public void TypeHit()
     {
         Debug.Log("*******************************************");
+        Debug.Log("We are in!");
+        Debug.Log(CameraRayCast.TargetHit.transform.parent.gameObject.layer);
+        Debug.Log(CameraRayCast.TargetHit.transform.parent.gameObject);
+/*
         if (SelectedUnit == null)
         {
 
@@ -41,23 +45,23 @@ public class Actions : MonoBehaviour
         else
         {
             Debug.Log(SelectedUnit.name);
-        }
-
+        }*/
+/*
         try
         {
-            if (this.gameObject.transform.GetComponent<Actions>().SelectedUnit.transform.parent == null)
+            if (SelectedUnit.transform.parent == null)
             {
 
             }
             else
             {
-                Debug.Log(this.gameObject.transform.GetComponent<Actions>().SelectedUnit.transform.parent.name);
+                Debug.Log(SelectedUnit.transform.parent.name);
             }
         }
         catch (UnassignedReferenceException)
         {
 
-        }
+        }*/
 
 
         //                         ------------------------------------------------ATTACK & REFUEL-------------------------------------------------
@@ -107,7 +111,7 @@ public class Actions : MonoBehaviour
             StructureHit();
         }
 
-        if (CameraRayCast.TargetHit.layer == 10) //Terrain
+        if (CameraRayCast.TargetHit.transform.parent.gameObject.layer == 10) //Terrain
         {
             Debug.Log("epicL");
             TerrainHit();
@@ -651,5 +655,17 @@ public class Actions : MonoBehaviour
                 SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().TeamColorUpdate();
             }
         }
+    }
+
+    public void Update()
+    {
+        i -= Time.deltaTime;
+
+        if(i <= 0)
+        {
+            Debug.Log("it updates!");
+            i = 1;
+        }
+
     }
 }
