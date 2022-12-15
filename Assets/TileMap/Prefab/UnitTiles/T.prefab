@@ -565,6 +565,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2377237881672866459}
+  - component: {fileID: 3371517493396761610}
   m_Layer: 0
   m_Name: MovementRange
   m_TagString: Untagged
@@ -648,6 +649,18 @@ Transform:
   m_Father: {fileID: 4971859720075622557}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3371517493396761610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148755945331937438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e567b3eb9988d40bb3aaa1a0268a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &85290499309525888
 PrefabInstance:
   m_ObjectHideFlags: 0
