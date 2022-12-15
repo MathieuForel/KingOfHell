@@ -216,7 +216,6 @@ public class SmartMovementTile : MonoBehaviour
             {
                 if (SouthCollider.GetComponent<MoveTileBehaviour>().Mountain)
                 {
-                    Debug.Log("is cac south");
                     SmartMoveTileInstantiated.GetComponent<SmartMovementTile>().depth = depth - 1;
                 }
             }

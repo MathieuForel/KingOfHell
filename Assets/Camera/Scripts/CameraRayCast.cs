@@ -84,7 +84,14 @@ public class CameraRayCast : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            this.gameObject.transform.GetComponent<Actions>().TypeHit();
+            try
+            {
+                this.gameObject.transform.GetComponent<Actions>().TypeHit();
+            }
+            catch(NullReferenceException)
+            { 
+            
+            }
         }
     }
 }

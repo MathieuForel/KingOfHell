@@ -581,8 +581,8 @@ public class Actions : MonoBehaviour
     public void CanCapture()
     {
         Debug.Log("can i capture?");
-
-        if(SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject != null)
+        Debug.Log(SelectedUnit.transform.parent.gameObject);
+        if (SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject != null)
         {
             if (SelectedUnit.transform.parent.position.x == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
                 SelectedUnit.transform.parent.position.y == SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)

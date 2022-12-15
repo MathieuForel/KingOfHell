@@ -86,6 +86,7 @@ public class MoveTileBehaviour : MonoBehaviour
 
                     if (TerrainTouched.GetComponent<TileState>().isOcean)
                     {
+                        Debug.Log("touched ocean");
                         this.gameObject.SetActive(false);
                     }
                 }
