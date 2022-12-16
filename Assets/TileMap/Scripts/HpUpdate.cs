@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class HpUpdate : MonoBehaviour
 {
+
+    [SerializeField] public Color BaseColor;
+
+    public void Start()
+    {
+        BaseColor = this.gameObject.transform.GetComponent<TextMesh>().color;
+    }
+
     void FixedUpdate()
     {
 
@@ -16,7 +24,7 @@ public class HpUpdate : MonoBehaviour
         else
         {
             this.gameObject.GetComponent<TextMesh>().text = this.gameObject.GetComponentInParent<TileStatistics>().health.ToString();
-            this.gameObject.transform.GetComponent<TextMesh>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+            this.gameObject.transform.GetComponent<TextMesh>().color = BaseColor;
         }
 
     }

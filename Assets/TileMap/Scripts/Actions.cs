@@ -332,7 +332,7 @@ public class Actions : MonoBehaviour
 
             for (int i = 0; i < SelectedUnit.transform.transform.GetChild(2).childCount; i++)
             {
-                Debug.Log(SelectedUnit.transform.GetChild(2).GetChild(i).name);
+                //Debug.Log(SelectedUnit.transform.GetChild(2).GetChild(i).name);
 
                 if (PreviousUnit.transform.position.x == SelectedUnit.transform.GetChild(2).GetChild(i).position.x &&
                    PreviousUnit.transform.position.y == SelectedUnit.transform.GetChild(2).GetChild(i).position.y)

@@ -44,17 +44,24 @@ public class BattleCalculator : MonoBehaviour
     {
         BattleUI.transform.GetChild(5).GetChild(2).gameObject.SetActive(false);
 
-        AttackPOWER = AttackingUnit.GetComponent<TileStatistics>().attack * (AttackingUnit.GetComponent<TileStatistics>().character / AttackingUnit.GetComponent<TileStatistics>().baseCharacter);
+        AttackPOWER = AttackingUnit.GetComponent<TileStatistics>().attack * (AttackingUnit.GetComponent<TileStatistics>().character / AttackingUnit.GetComponent<TileStatistics>().baseCharacter) + AttackingUnit.GetComponent<TileStatistics>().bonusAttack;
 
-        DefencePOWER = AttackingUnit.GetComponent<TileStatistics>().defence;
+        DefencePOWER = DefendingUnit.GetComponent<TileStatistics>().defence;
 
         RPCManagement();
 
-        Damage = Mathf.FloorToInt((AttackPOWER * RPC - DefencePOWER) * 10) / 10;
+        if (RPC < 1 && AttackingUnit.GetComponent<TileState>().isS)
+        {
+            RPC = 1;
+        }
 
-        Debug.Log(Damage);
+        Debug.Log(AttackPOWER);
+        Debug.Log(DefencePOWER);
 
-        DefendingUnit.GetComponent<TileStatistics>().health -= Damage/2;
+        Damage = Mathf.Ceil((AttackPOWER * RPC - DefencePOWER) * 10) / 10;
+
+
+        DefendingUnit.GetComponent<TileStatistics>().health -= Mathf.Clamp(Damage / 2, 0 ,100);
 
         if (DefendingUnit.GetComponent<TileStatistics>().health <= 0)
         {
@@ -79,36 +86,36 @@ public class BattleCalculator : MonoBehaviour
         //--------------------------------------------------------STRONG------------------------------------------------
         if(AttackingUnit.GetComponent<TileState>().isStrongVsCAC && DefendingUnit.GetComponent<TileState>().isCAC)
         {
-            RPC += 0.5f;
+            RPC = 1.5f;
         }
         if (AttackingUnit.GetComponent<TileState>().isStrongVsTALD && DefendingUnit.GetComponent<TileState>().isTALD)
         {
-            RPC += 0.5f;
+            RPC = 1.5f;
         }
         if (AttackingUnit.GetComponent<TileState>().isStrongVsT && DefendingUnit.GetComponent<TileState>().isT)
         {
-            RPC += 0.5f;
+            RPC = 1.5f;
         }
         if (AttackingUnit.GetComponent<TileState>().isStrongVsS && DefendingUnit.GetComponent<TileState>().isS)
         {
-            RPC += 0.5f;
+            RPC = 1.5f;
         }
         //--------------------------------------------------------WEAK------------------------------------------------
         if (AttackingUnit.GetComponent<TileState>().isWeakVsCAC && DefendingUnit.GetComponent<TileState>().isCAC)
         {
-            RPC *= 0.5f;
+            RPC = 0.5f;
         }
         if (AttackingUnit.GetComponent<TileState>().isWeakVsTALD && DefendingUnit.GetComponent<TileState>().isTALD)
         {
-            RPC *= 0.5f;
+            RPC = 0.5f;
         }
         if (AttackingUnit.GetComponent<TileState>().isWeakVsT && DefendingUnit.GetComponent<TileState>().isT)
         {
-            RPC *= 0.5f;
+            RPC = 0.5f;
         }
         if (AttackingUnit.GetComponent<TileState>().isWeakVsS && DefendingUnit.GetComponent<TileState>().isS)
         {
-            RPC *= 0.5f;
+            RPC = 0.5f;
         }
     }
 
@@ -122,17 +129,27 @@ public class BattleCalculator : MonoBehaviour
 
         AttackPOWER = DefendingUnit.GetComponent<TileStatistics>().attack * (DefendingUnit.GetComponent<TileStatistics>().character / DefendingUnit.GetComponent<TileStatistics>().baseCharacter);
 
-        DefencePOWER = DefendingUnit.GetComponent<TileStatistics>().defence;
+        DefencePOWER = AttackingUnit.GetComponent<TileStatistics>().defence;
+
 
         RPCManagement();
 
-        Damage = Mathf.FloorToInt((AttackPOWER * RPC - DefencePOWER) * 10) / 10;
+        RPC =  Mathf.Abs(RPC - 2);
 
-        Debug.Log(Damage);
+        if(RPC < 1 && DefendingUnit.GetComponent<TileState>().isS)
+        {
+            RPC = 1;
+        }
+        Debug.Log(RPC);
+        Debug.Log(AttackPOWER);
+        Debug.Log(DefencePOWER);
+
+        Damage = Mathf.Ceil((AttackPOWER * RPC - DefencePOWER) * 10) / 10;
+
 
         if (DefendingUnit.activeInHierarchy)
         {
-            AttackingUnit.GetComponent<TileStatistics>().health -= Damage / 2;
+            AttackingUnit.GetComponent<TileStatistics>().health -= Mathf.Clamp(Damage / 2, 0, 100);
         }
 
 
