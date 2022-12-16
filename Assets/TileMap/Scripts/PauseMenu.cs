@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -53,6 +54,10 @@ public class PauseMenu : MonoBehaviour
         for (i = 0; i < Units.transform.childCount; i++)
         {
             Units.transform.GetChild(i).gameObject.tag = "HasMoved";
+
+            Units.transform.GetChild(i).GetChild(1).gameObject.SetActive(false);
+            Units.transform.GetChild(i).GetChild(2).gameObject.SetActive(false);
+            Units.transform.GetChild(i).GetChild(3).gameObject.SetActive(false);
             Units.transform.GetChild(i).GetChild(4).gameObject.SetActive(false);
         }
 
@@ -113,7 +118,7 @@ public class PauseMenu : MonoBehaviour
                             }
                         }
                     }
-                    catch (UnassignedReferenceException)
+                    catch (Exception e)
                     {
 
                     }
@@ -160,7 +165,7 @@ public class PauseMenu : MonoBehaviour
                             }
                         }
                     }
-                    catch (UnassignedReferenceException)
+                    catch (Exception e)
                     {
 
                     }

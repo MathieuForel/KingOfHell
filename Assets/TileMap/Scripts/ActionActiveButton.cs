@@ -81,11 +81,11 @@ public class ActionActiveButton : MonoBehaviour
             else
             {
                 this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
-            }
+            }/*
             if (CameraRayCast.selectedGameObject.gameObject.GetComponent<TileState>().isT == true)
             {
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
+            }*/
         }
         /*
         Camera.gameObject.GetComponent<Actions>().CanCapture();
