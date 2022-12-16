@@ -19,7 +19,7 @@ public class FogOfWarGenerator : MonoBehaviour
     {
         if(activate)
         {
-            activate= false;
+            activate = false;
             GridGenerator();
         }
     }
@@ -27,6 +27,10 @@ public class FogOfWarGenerator : MonoBehaviour
 
     public void GridGenerator()
     {
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            Destroy(this.gameObject.transform.GetChild(i).gameObject);
+        }
 
         for (int x = 0; x < Ncolumn; x++)
         {

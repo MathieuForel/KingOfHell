@@ -120,7 +120,12 @@ public class TileStatistics : MonoBehaviour
             movement= stamina;
         }
 
-        if(baseHealth > health)
+        if (movement <= 0)
+        {
+            movement = 1;
+        }
+
+        if (baseHealth > health)
         {
             float healthlost = baseHealth - health;
             float characterhealthratio = baseHealth / baseCharacter;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class PauseMenu : MonoBehaviour
 
 
     [SerializeField] public int i = 0;
+
+
+    [SerializeField] private GameObject VictoryScreens;
+    [SerializeField] public bool HellHQUp;
+    [SerializeField] public bool HeavenHQUp;
 
     public void Start()
     {
@@ -89,6 +95,28 @@ public class PauseMenu : MonoBehaviour
                         Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusMovementRange = 1;
                         Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusAttack = 2.5f;
                     }
+
+                    //-------------------------------------------------------STRUCTURE------------------------------------------------
+                    try
+                    {
+                        if (Units.transform.GetChild(i).gameObject.transform.position.x == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
+                            Units.transform.GetChild(i).gameObject.transform.position.y == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+                        {
+                            if (Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell &&
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven &&
+                                Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral == false)
+                            {
+                                Debug.Log("ON A STRUCTURE REGENERATING");
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().health += 2;
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().stamina += 20;
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().mana = Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().baseMana;
+                            }
+                        }
+                    }
+                    catch (UnassignedReferenceException)
+                    {
+
+                    }
                 }
             }
 
@@ -114,11 +142,36 @@ public class PauseMenu : MonoBehaviour
                         Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusMovementRange = 1;
                         Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().bonusAttack = 2.5f;
                     }
+
+                    //-------------------------------------------------------STRUCTURE------------------------------------------------
+                    try
+                    {
+                        if (Units.transform.GetChild(i).gameObject.transform.position.x == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.x &&
+                            Units.transform.GetChild(i).gameObject.transform.position.y == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.transform.position.y)
+                        {
+                            if (Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHell == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHell &&
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven == Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamHeaven &&
+                                Units.transform.GetChild(i).gameObject.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileState>().teamNeutral == false)
+                            {
+                                Debug.Log("ON A STRUCTURE REGENERATING");
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().health += 2;
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().stamina += 20;
+                                Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().mana = Units.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().baseMana;
+                            }
+                        }
+                    }
+                    catch (UnassignedReferenceException)
+                    {
+
+                    }
                 }
             }
         }
 
         //-----------------------------------------------------Structure CHECK-----------------------------------------------------
+
+        HellHQUp = false;
+        HeavenHQUp = false;
 
         for (i = 0; i < Structure.transform.childCount; i++)
         {
@@ -129,6 +182,12 @@ public class PauseMenu : MonoBehaviour
                     HellFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
                     Structure.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                 }
+
+                if (Structure.transform.GetChild(i).gameObject.GetComponent<TileState>().isHQ)
+                {
+                    Debug.Log(Structure.transform.GetChild(i).gameObject);
+                    HellHQUp = true;
+                }
             }
 
             if (Structure.transform.GetChild(i).gameObject.GetComponent<TileState>().teamHeaven)
@@ -138,7 +197,25 @@ public class PauseMenu : MonoBehaviour
                     HeavenFunds += Structure.transform.GetChild(i).gameObject.GetComponent<TileStatistics>().fundPerTurn;
                     Structure.transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                 }
+
+                if (Structure.transform.GetChild(i).gameObject.GetComponent<TileState>().isHQ)
+                {
+                    Debug.Log(Structure.transform.GetChild(i).gameObject);
+                    HeavenHQUp = true;
+                }
             }
+        }
+
+        if(HellHQUp == false)
+        {
+            CameraRayCast.CanSelect = false;
+            VictoryScreens.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        if (HeavenHQUp == false)
+        {
+            CameraRayCast.CanSelect = false;
+            VictoryScreens.transform.GetChild(0).gameObject.SetActive(true);
         }
 
         Cancel();

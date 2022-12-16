@@ -34,7 +34,7 @@ public class FieldOfView : MonoBehaviour
 
     public void LateUpdate()
     {
-        ViewDistance = this.gameObject.transform.parent.GetComponent<TileStatistics>().vision;
+        ViewDistance = this.gameObject.transform.parent.GetComponent<TileStatistics>().vision + 0.1f;
         RayCount = (int)ViewDistance * 4;
 
         //fov = 90f;
@@ -53,14 +53,6 @@ public class FieldOfView : MonoBehaviour
         TriangleIndex = 0;
         for (int i = 0; i <= RayCount; i++)
         {
-            //Vector3 vertex;
-
-            //RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, new Vector3(Mathf.Cos(Angle * (Mathf.PI / 180f)), Mathf.Sin(Angle * (Mathf.PI / 180f))), ViewDistance/*, LayerMask*/);
-
-            //RaycastHit[] ray = Physics.RaycastAll(origin, new Vector3(Mathf.Cos(Angle * (Mathf.PI / 180f)), Mathf.Sin(Angle * (Mathf.PI / 180f))), Mathf.Infinity, LayerMask);
-
-            //bool ray = Physics.Raycast(origin, new Vector3(Mathf.Cos(Angle * (Mathf.PI / 180f)), Mathf.Sin(Angle * (Mathf.PI / 180f))), Mathf.Infinity, LayerMask);
-
             Ray ray = new Ray(this.gameObject.transform.position, new Vector3(Mathf.Cos(Angle * (Mathf.PI / 180f)), Mathf.Sin(Angle * (Mathf.PI / 180f))));
             RaycastHit hit;
 
@@ -78,7 +70,7 @@ public class FieldOfView : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, ViewDistance) && hit.transform.gameObject.tag == "BlockVision")
                 {
                     //Debug.Log("i hit something D:");
-                    vertex = origin;
+                    vertex = origin - new Vector3(this.gameObject.transform.position.x - hit.transform.position.x, this.gameObject.transform.position.y - hit.transform.position.y);
                     //Debug.Log((this.gameObject.transform.position.x - hit.transform.position.x));
                 }
 

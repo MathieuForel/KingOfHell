@@ -55,6 +55,12 @@ public class MoveTileBehaviour : MonoBehaviour
                 {
                     UnitTouched = ColliderTouched[i].gameObject.transform.parent.gameObject;
 
+                    if(this.gameObject.transform.parent.parent.parent.GetComponent<TileState>().isS == false)
+                    {
+                        this.gameObject.SetActive(false);
+                    }
+
+
                 }
 
                 if (ColliderTouched[i].gameObject.transform.parent.gameObject.layer == 11)
@@ -87,7 +93,11 @@ public class MoveTileBehaviour : MonoBehaviour
                     if (TerrainTouched.GetComponent<TileState>().isOcean)
                     {
                         Debug.Log("touched ocean");
-                        this.gameObject.SetActive(false);
+
+                        if (this.gameObject.transform.parent.parent.parent.GetComponent<TileState>().isS == false)
+                        {
+                            this.gameObject.SetActive(false);
+                        }
                     }
                 }
             }

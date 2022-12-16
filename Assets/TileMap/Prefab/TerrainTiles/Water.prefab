@@ -105,7 +105,8 @@ MonoBehaviour:
   handicapAttack: 0
   handicapDefence: 0
   handicapVision: 0
-  handicapMovementRange: 100
+  handicapMovementRange: 2
+  baseCaptureHP: 0
   captureHP: 0
   fundPerTurn: 0
   defencePoints: 0
@@ -237,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5205335678131892700, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}
       propertyPath: m_Size.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ce72ac00728d114388cc5e4efa1cc50, type: 3}

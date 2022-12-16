@@ -116,7 +116,7 @@ public class BattleCalculator : MonoBehaviour
 
     public void CounterAttack()
     {
-        Debug.Log("you did it, you counter attacked what a move!");
+        Debug.Log("you did it, you counter attacked! What a move!");
 
         BattleUI.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
 
