@@ -145,6 +145,7 @@ public class Actions : MonoBehaviour
                     SelectedUnit = CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.GetChild(0).gameObject;
                     Debug.Log(SelectedUnit.transform.parent);
                     ActionMenu.gameObject.SetActive(true);
+                    StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(0.5f, 4f));
                 }
 
                 if (CameraRayCast.TargetHit.transform.parent.transform.parent.transform.parent.tag == "HasMoved")
@@ -321,6 +322,7 @@ public class Actions : MonoBehaviour
             }
 
             this.gameObject.GetComponent<BattleCalculator>().StartBattle();
+            StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(10, 3));
 
             SelectedUnit.transform.GetChild(2).gameObject.SetActive(true); // counter attack fffffffffffffffffffffffffffffffffffff
 
@@ -339,7 +341,7 @@ public class Actions : MonoBehaviour
 
                     SelectedUnit.GetComponent<TileStatistics>().FixedUpdate();
                     this.gameObject.GetComponent<BattleCalculator>().CounterAttack();
-
+                    StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(2, 5));
                 }
             }
 
@@ -518,6 +520,7 @@ public class Actions : MonoBehaviour
         Debug.Log(CameraRayCast.CanSelect);
 
         ActionMenu.gameObject.SetActive(false);
+        StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(1, 1));
     }
 
     public void RefuelHit()
@@ -540,6 +543,7 @@ public class Actions : MonoBehaviour
         Debug.Log(CameraRayCast.CanSelect);
 
         ActionMenu.gameObject.SetActive(false);
+        StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(1, 1));
     }
 
     public void CancelAction()
@@ -554,6 +558,7 @@ public class Actions : MonoBehaviour
         Debug.Log(SelectedUnit.name);
 
         ActionMenu.gameObject.SetActive(true);
+        StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(1, 2));
     }
 
     public void Wait()
@@ -565,6 +570,7 @@ public class Actions : MonoBehaviour
         CameraRayCast.CanSelect = true;
 
         ActionMenu.gameObject.SetActive(false);
+        StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(1, 1));
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isUnit)
         {
@@ -627,6 +633,7 @@ public class Actions : MonoBehaviour
             SelectedUnit.transform.parent.GetComponentInChildren<StatCheck>().structureGameObject.GetComponent<TileStatistics>().captureHP -= (int)SelectedUnit.transform.parent.GetComponent<TileStatistics>().health;
 
             ActionMenu.gameObject.SetActive(false);
+            StartCoroutine(this.gameObject.GetComponent<CameraShake>().Shake(1, 2));
             ActionMode = false;
             IsAttacking = false;
             IsRefueling = false;
