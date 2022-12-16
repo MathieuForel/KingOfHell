@@ -414,8 +414,17 @@ public class Actions : MonoBehaviour
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isHQ || CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
         {
-            if(HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 16000 ||
-               HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 16000)
+            if(HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 16000)
+            {
+                Instantiate(CAC, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
+
+                CameraRayCast.CanSelect = true;
+
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HellFunds -= 16000;
+            }
+
+            if (HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 16000)
             {
                 Instantiate(CAC, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
 
@@ -442,6 +451,15 @@ public class Actions : MonoBehaviour
                 CameraRayCast.CanSelect = true;
 
                 RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HellFunds -= 24000;
+            }
+
+            if (HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
+            {
+                Instantiate(TALD, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
+                CameraRayCast.CanSelect = true;
+
+                RecrutingMenu.gameObject.SetActive(false);
                 this.gameObject.GetComponent<PauseMenu>().HeavenFunds -= 24000;
             }
             Debug.Log("not enough moeny to recruit");
@@ -454,8 +472,16 @@ public class Actions : MonoBehaviour
 
         if (CameraRayCast.selectedGameObject.GetComponentInParent<TileState>().isFactory)
         {
-            if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 24000 ||
-                HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
+            if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 24000)
+            {
+                Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
+                CameraRayCast.CanSelect = true;
+
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HeavenFunds -= 24000;
+            }
+
+            if (HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 24000)
             {
                 Instantiate(T, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
                 CameraRayCast.CanSelect = true;
@@ -475,6 +501,15 @@ public class Actions : MonoBehaviour
         {
             if (HellTurn == true && this.gameObject.GetComponent<PauseMenu>().HellFunds >= 32000 ||
                 HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 32000)
+            {
+                Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
+                CameraRayCast.CanSelect = true;
+
+                RecrutingMenu.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PauseMenu>().HellFunds -= 32000;
+            }
+
+            if (HellTurn == false && this.gameObject.GetComponent<PauseMenu>().HeavenFunds >= 32000)
             {
                 Instantiate(S, CameraRayCast.selectedGameObject.transform.parent.transform.position, Quaternion.identity, GameObject.Find("Units").transform);
                 CameraRayCast.CanSelect = true;

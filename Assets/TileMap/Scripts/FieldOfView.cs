@@ -34,8 +34,8 @@ public class FieldOfView : MonoBehaviour
 
     public void LateUpdate()
     {
-        ViewDistance = this.gameObject.transform.parent.GetComponent<TileStatistics>().vision + 0.1f;
-        RayCount = (int)ViewDistance * 4;
+        ViewDistance = this.gameObject.transform.parent.GetComponent<TileStatistics>().vision;
+        RayCount = (int)ViewDistance * 6;
 
         //fov = 90f;
         Vector3 origin = Vector3.zero;
